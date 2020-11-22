@@ -1,9 +1,23 @@
 ---
 title: Hello World
+date: 2020/10/10
+updated: 2020/11/22
+categories: program
+tags:
+- NET Core
+- C#
+top_img:
+keywords: Test
+description: Hello World Post
 ---
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
 ## Quick Start
+
+```javascript
+console.log(123)
+console.log(456)
+```
 
 ### Create a new post
 
