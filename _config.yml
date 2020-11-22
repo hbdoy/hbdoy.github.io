@@ -8,7 +8,7 @@ subtitle: 生活點滴
 description: 分享科技、程式、生活、娛樂的地方
 keywords: 科技, 程式, 生活, 娛樂
 author: hbdoy
-language: zh-tw
+language: zh-TW
 timezone: 
 
 # URL
@@ -99,6 +99,12 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: butterfly
+
+# search
+search:
+  path: search.xml
+  field: post
+  content: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
