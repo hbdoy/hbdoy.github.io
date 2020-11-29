@@ -6,7 +6,7 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo clean & hexo generate & hexo deploy",
-    "server": "hexo generate & hexo server"
+    "server": "hexo clean & hexo generate & hexo server"
   },
   "hexo": {
     "version": "5.2.0"
@@ -14,6 +14,7 @@
   "dependencies": {
     "hexo": "^5.0.0",
     "hexo-deployer-git": "^2.1.0",
+    "hexo-filter-nofollow": "^2.0.2",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-index": "^2.0.0",

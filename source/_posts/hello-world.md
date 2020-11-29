@@ -6,7 +6,7 @@ categories: program
 tags:
 - NET Core
 - C#
-top_img:
+# top_img:
 keywords: Test
 description: Hello World Post
 ---
