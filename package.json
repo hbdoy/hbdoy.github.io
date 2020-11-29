@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo generate",
+    "build": "hexo clean & hexo generate",
     "clean": "hexo clean",
-    "deploy": "hexo clean & hexo generate & hexo deploy",
+    "deploy": "hexo clean & hexo generate & hexo deploy // Don't use, invoid cname setting lost",
     "server": "hexo clean & hexo generate & hexo server"
   },
   "hexo": {
