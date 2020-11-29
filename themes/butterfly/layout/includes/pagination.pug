@@ -17,12 +17,13 @@ else
       .prev-post(class=hasPageNext)
         - var pagination_cover = page.prev.cover === false ? page.prev.randomcover : page.prev.cover
         a(href=url_for(page.prev.path))
-          if theme.lazyload.enable
-            img.prev-cover(data-lazy-src=url_for(pagination_cover) onerror=`onerror=null;src='${url_for(theme.error_img.post_page)}'` )
-          else
-            img.prev-cover(src=url_for(pagination_cover) onerror=`onerror=null;src='${url_for(theme.error_img.post_page)}'` )
+          //- if theme.lazyload.enable
+            //- img.prev-cover(data-lazy-src=url_for(pagination_cover) onerror=`onerror=null;src='${url_for(theme.error_img.post_page)}'` )
+          //- else
+            //- img.prev-cover(src=url_for(pagination_cover) onerror=`onerror=null;src='${url_for(theme.error_img.post_page)}'` )
           .pagination-info
-            .label=_p('pagination.prev')
+            .i.fa.fa-chevron-circle-left
+            //- .label=_p('pagination.prev')
             .prev_info=page.prev.title
           
     if(page.next)
@@ -30,10 +31,11 @@ else
       - var pagination_cover = page.next.cover == false ? page.next.randomcover : page.next.cover
       .next-post(class=hasPagePrev)
         a(href=url_for(page.next.path))
-          if theme.lazyload.enable
-            img.next-cover(data-lazy-src=url_for(pagination_cover) onerror=`onerror=null;src='${url_for(theme.error_img.post_page)}'`)
-          else
-            img.next-cover(src=url_for(pagination_cover) onerror=`onerror=null;src='${url_for(theme.error_img.post_page)}'`)
+          //- if theme.lazyload.enable
+            //- img.next-cover(data-lazy-src=url_for(pagination_cover) onerror=`onerror=null;src='${url_for(theme.error_img.post_page)}'`)
+          //- else
+            //- img.next-cover(src=url_for(pagination_cover) onerror=`onerror=null;src='${url_for(theme.error_img.post_page)}'`)
           .pagination-info
-            .label=_p('pagination.next')
+            .i.fa.fa-chevron-circle-right
+            //- .label=_p('pagination.next')
             .next_info=page.next.title 
