@@ -5,7 +5,7 @@
   "scripts": {
     "build": "hexo clean & hexo generate",
     "clean": "hexo clean",
-    "deploy": "hexo clean & hexo generate & hexo deploy // Don't use, invoid cname setting lost",
+    "deploy": "hexo clean & hexo generate & hexo deploy",
     "server": "hexo clean & hexo generate & hexo server"
   },
   "hexo": {
