@@ -3148,7 +3148,7 @@ blockquote footer cite:before {
 #post-comment .comment-wrap > div:nth-child(2) {
   display: none;
 }
-#post-comment .comment-wrap > div:nth-child(1) {
+#post-comment .comment-wrap > div:nth-child(2) {
   background-color: #fff !important;
   border-radius: 5px !important;
 }
