@@ -4,65 +4,29 @@
   
     
     <entry>
-      <title>Test2</title>
-      <link href="2020/11/23/Test2/"/>
-      <url>2020/11/23/Test2/</url>
+      <title>Hexo 建站心得</title>
+      <link href="2020/11/30/hexo-note/"/>
+      <url>2020/11/30/hexo-note/</url>
       
-        <content type="html"><![CDATA[<h2 id="Test2"><a href="#Test2" class="headerlink" title="Test2"></a>Test2</h2><p>12313132</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Test</title>
-      <link href="2020/10/10/Test/"/>
-      <url>2020/10/10/Test/</url>
-      
-        <content type="html"><![CDATA[<h1 id="HiHi"><a href="#HiHi" class="headerlink" title="HiHi"></a>HiHi</h1><p>123</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>原本以為用 Hexo、挑個 Theme，之後把 Blog 建起來應該不會遇到什麼問題，也不用特別記錄下來，但…事與願違XD</p><h1 id="本文開始"><a href="#本文開始" class="headerlink" title="本文開始"></a>本文開始</h1><p>我用的主題是 <a href="https://github.com/jerryc127/hexo-theme-butterfly">butterfly</a>，理論上只要把裡面文檔都看過就能解決 90% 的問題，也不太需要看<a href="https://hexo.io/zh-tw/docs/">官方文檔</a>，弄好之後放在 Github Page，然後前面掛個 Cloudflare。</p><p>Hexo 大致設定</p><ul><li>Disqus / Facebook Comments</li><li>PWA</li><li>Custom Pagination、Footer</li><li>Edit Scaffolds</li></ul><p>Cloudflare 大致設定</p><ul><li>SSL、Always Use HTTPS、Automatic HTTPS Rewrites</li><li>Auto Minify、Cache、Always Online</li></ul><p>SEO 大致處理</p><ul><li>Sitemap、Robots.txt</li><li>Nofollow</li><li>Submit to Google Search Console</li></ul><p>科普知識就不提了，網路上已經很多詳細的文章</p><ul><li>What ‘s Hexo and Why</li><li>What’s Markdown</li><li>How to deploy to Github Page</li><li>How to use your custom domain and How to buy</li><li>What’s SSL</li><li>etc…</li></ul><p>以下會列出當時有遇到的一些問題。</p><h2 id="Pagination-預設-Style-以圖片為背景"><a href="#Pagination-預設-Style-以圖片為背景" class="headerlink" title="Pagination 預設 Style 以圖片為背景"></a>Pagination 預設 Style 以圖片為背景</h2><p><img src="https://i.imgur.com/rMS5m5Z.png"><br><a href="https://jerryc.me/posts/21cfbf15/">圖片來源</a></p><p>主題預設每個 Post 都會有一個封面圖片，如果不想要可以去設定檔拿掉，但拿掉圖片，上/下一頁連結就變成高度很高，但背景是白的連結了。</p><p>只想要單純的文字，像這樣的話</p><p><img src="https://i.imgur.com/LLCVGr4.png"></p><p>要直接改 <code>themes\butterfly\layout\includes\pagination.pug</code></p><p>以下節錄我調整後的程式碼，以可以調整成自己喜歡的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if(page.prev)</span><br><span class="line">    - var hasPageNext &#x3D; page.next ? &#39;pull-left&#39; : &#39;pull-full&#39;</span><br><span class="line">    .prev-post(class&#x3D;hasPageNext)</span><br><span class="line">        a(href&#x3D;url_for(page.prev.path))</span><br><span class="line">            .pagination-info</span><br><span class="line">                .i.fa.fa-chevron-circle-left</span><br><span class="line">                .prev_info&#x3D;page.prev.title</span><br><span class="line">          </span><br><span class="line">if(page.next)</span><br><span class="line">    - var hasPagePrev &#x3D; page.prev ? &#39;pull-right&#39; : &#39;pull-full&#39;</span><br><span class="line">    .next-post(class&#x3D;hasPagePrev)</span><br><span class="line">        a(href&#x3D;url_for(page.next.path))</span><br><span class="line">            .pagination-info</span><br><span class="line">                .i.fa.fa-chevron-circle-right</span><br><span class="line">                .next_info&#x3D;page.next.title </span><br></pre></td></tr></table></figure><h2 id="Facebook-Comments"><a href="#Facebook-Comments" class="headerlink" title="Facebook Comments"></a>Facebook Comments</h2><h3 id="超級無敵大雷1"><a href="#超級無敵大雷1" class="headerlink" title="超級無敵大雷1"></a>超級無敵大雷1</h3><p>我網站主題是深色(Dark)，但 FaceBook Comments Dark Theme 目前壞掉，只能透過 CSS 把評論區塊背景設為白色，不然會完全看不到字 (Disqus 沒這個問題)。</p><p><img src="https://i.imgur.com/Lu7Qizm.png"></p><p>看起來和 Hexo 無關，是 Facebook 的問題、也有人 2020/08/12 回報了，雖然進度上寫處理完畢，但我 2020/11/30 測試起來問題仍在。</p><p><a href="https://developers.facebook.com/support/bugs/1759174414250782/">https://developers.facebook.com/support/bugs/1759174414250782/</a></p><p><img src="https://i.imgur.com/rbPS02Y.png"></p><p>不想放棄 Facebook Comments + 深色主題的話，我的解法是把 Facebook 的 Comment 區塊直接背景變白色XD</p><p><code>themes\butterfly\source\css\_layout\comments.styl</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.comment-wrap</span><br><span class="line">    &gt; div:nth-child(2)</span><br><span class="line">        background-color: white !important;</span><br><span class="line">        border-radius: 5px !important;</span><br></pre></td></tr></table></figure><p><img src="https://i.imgur.com/bkjnPns.png"></p><p>而 Disqus 則維持原本正常的深色主題</p><p><img src="https://i.imgur.com/EUrCFXn.png"></p><h3 id="超級無敵大雷2"><a href="#超級無敵大雷2" class="headerlink" title="超級無敵大雷2"></a>超級無敵大雷2</h3><p>原本以為這樣就高枕無憂，但 2020/11/30 的 IOS 不管是 Chrome 還是 Safari 都無法透過 Facebook Comments 留言，但桌面版、Android 的可以正常留言…</p><p>狀況有2</p><ol><li>明明已經有登入 Facebook，但留言區抓不到，一樣要登入，可是點了登入之後就瘋狂無限白畫面跳轉。</li><li>留言框自己不斷重整，無法選取打字。</li></ol><p>以上問題測試了 3 台 iPhone 都是這樣QQ，一開始以為是我哪裡沒處理好，但到幾個新聞網站 (水果、聯X) 的留言區測試，發現一樣有這些問題…，這個狀況目前無解。</p>]]></content>
       
       
       <categories>
           
-          <category> program </category>
+          <category> Hexo </category>
+          
+          <category> Blog </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> NET Core </tag>
+            <tag> Hexo </tag>
             
-            <tag> C# </tag>
+            <tag> Butterfly </tag>
             
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="2020/10/10/hello-world/"/>
-      <url>2020/10/10/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">456</span>)</span><br></pre></td></tr></table></figure><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> program </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> NET Core </tag>
-            
-            <tag> C# </tag>
+            <tag> Facebook Comment </tag>
             
         </tags>
       

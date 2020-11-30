@@ -1,0 +1,263 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hexo 建站心得 | hbdoy's blog</title><meta name="keywords" content="Hexo,Butterfly,Facebook Comment"><meta name="author" content="Ryan Lee"><meta name="copyright" content="Ryan Lee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="前言原本以為用 Hexo、挑個 Theme，之後把 Blog 建起來應該不會遇到什麼問題，也不用特別記錄下來，但…事與願違XD 本文開始我用的主題是 butterfly，理論上只要把裡面文檔都看過就能解決 90% 的問題，也不太需要看官方文檔，弄好之後放在 Github Page，然後前面掛個 Cloudflare。 Hexo 大致設定  Disqus &#x2F; Facebook Comments PW">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 建站心得">
+<meta property="og:url" content="https://ryanlee.tw/2020/11/30/hexo-note/index.html">
+<meta property="og:site_name" content="hbdoy&#39;s blog">
+<meta property="og:description" content="前言原本以為用 Hexo、挑個 Theme，之後把 Blog 建起來應該不會遇到什麼問題，也不用特別記錄下來，但…事與願違XD 本文開始我用的主題是 butterfly，理論上只要把裡面文檔都看過就能解決 90% 的問題，也不太需要看官方文檔，弄好之後放在 Github Page，然後前面掛個 Cloudflare。 Hexo 大致設定  Disqus &#x2F; Facebook Comments PW">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ryanlee.tw/img/bg.jpg">
+<meta property="article:published_time" content="2020-11-30T15:02:30.000Z">
+<meta property="article:modified_time" content="2020-11-30T15:11:47.767Z">
+<meta property="article:author" content="Ryan Lee">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Butterfly">
+<meta property="article:tag" content="Facebook Comment">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ryanlee.tw/img/bg.jpg">
+<meta property="fb:app_id" content="209661937271472"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ryanlee.tw/2020/11/30/hexo-note/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/256.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/pwa/16.png"/><link rel="mask-icon" href="/img/pwa/32.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查詢的內容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-11-30 23:11:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/photo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">標籤</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/bg.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">hbdoy's blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">Hexo 建站心得</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2020-11-30T15:02:30.000Z" title="發表於 2020-11-30 23:02:30">2020-11-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2020-11-30T15:11:47.767Z" title="更新於 2020-11-30 23:11:47">2020-11-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/">Hexo</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/Blog/">Blog</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">754</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閲讀時長:</span><span>2分鐘</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>原本以為用 Hexo、挑個 Theme，之後把 Blog 建起來應該不會遇到什麼問題，也不用特別記錄下來，但…事與願違XD</p>
+<h1 id="本文開始"><a href="#本文開始" class="headerlink" title="本文開始"></a>本文開始</h1><p>我用的主題是 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">butterfly</a>，理論上只要把裡面文檔都看過就能解決 90% 的問題，也不太需要看<a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io/zh-tw/docs/">官方文檔</a>，弄好之後放在 Github Page，然後前面掛個 Cloudflare。</p>
+<p>Hexo 大致設定</p>
+<ul>
+<li>Disqus / Facebook Comments</li>
+<li>PWA</li>
+<li>Custom Pagination、Footer</li>
+<li>Edit Scaffolds</li>
+</ul>
+<p>Cloudflare 大致設定</p>
+<ul>
+<li>SSL、Always Use HTTPS、Automatic HTTPS Rewrites</li>
+<li>Auto Minify、Cache、Always Online</li>
+</ul>
+<p>SEO 大致處理</p>
+<ul>
+<li>Sitemap、Robots.txt</li>
+<li>Nofollow</li>
+<li>Submit to Google Search Console</li>
+</ul>
+<p>科普知識就不提了，網路上已經很多詳細的文章</p>
+<ul>
+<li>What ‘s Hexo and Why</li>
+<li>What’s Markdown</li>
+<li>How to deploy to Github Page</li>
+<li>How to use your custom domain and How to buy</li>
+<li>What’s SSL</li>
+<li>etc…</li>
+</ul>
+<p>以下會列出當時有遇到的一些問題。</p>
+<h2 id="Pagination-預設-Style-以圖片為背景"><a href="#Pagination-預設-Style-以圖片為背景" class="headerlink" title="Pagination 預設 Style 以圖片為背景"></a>Pagination 預設 Style 以圖片為背景</h2><p><img src="https://i.imgur.com/rMS5m5Z.png"><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://jerryc.me/posts/21cfbf15/">圖片來源</a></p>
+<p>主題預設每個 Post 都會有一個封面圖片，如果不想要可以去設定檔拿掉，但拿掉圖片，上/下一頁連結就變成高度很高，但背景是白的連結了。</p>
+<p>只想要單純的文字，像這樣的話</p>
+<p><img src="https://i.imgur.com/LLCVGr4.png"></p>
+<p>要直接改 <code>themes\butterfly\layout\includes\pagination.pug</code></p>
+<p>以下節錄我調整後的程式碼，以可以調整成自己喜歡的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if(page.prev)</span><br><span class="line">    - var hasPageNext &#x3D; page.next ? &#39;pull-left&#39; : &#39;pull-full&#39;</span><br><span class="line">    .prev-post(class&#x3D;hasPageNext)</span><br><span class="line">        a(href&#x3D;url_for(page.prev.path))</span><br><span class="line">            .pagination-info</span><br><span class="line">                .i.fa.fa-chevron-circle-left</span><br><span class="line">                .prev_info&#x3D;page.prev.title</span><br><span class="line">          </span><br><span class="line">if(page.next)</span><br><span class="line">    - var hasPagePrev &#x3D; page.prev ? &#39;pull-right&#39; : &#39;pull-full&#39;</span><br><span class="line">    .next-post(class&#x3D;hasPagePrev)</span><br><span class="line">        a(href&#x3D;url_for(page.next.path))</span><br><span class="line">            .pagination-info</span><br><span class="line">                .i.fa.fa-chevron-circle-right</span><br><span class="line">                .next_info&#x3D;page.next.title </span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Facebook-Comments"><a href="#Facebook-Comments" class="headerlink" title="Facebook Comments"></a>Facebook Comments</h2><h3 id="超級無敵大雷1"><a href="#超級無敵大雷1" class="headerlink" title="超級無敵大雷1"></a>超級無敵大雷1</h3><p>我網站主題是深色(Dark)，但 FaceBook Comments Dark Theme 目前壞掉，只能透過 CSS 把評論區塊背景設為白色，不然會完全看不到字 (Disqus 沒這個問題)。</p>
+<p><img src="https://i.imgur.com/Lu7Qizm.png"></p>
+<p>看起來和 Hexo 無關，是 Facebook 的問題、也有人 2020/08/12 回報了，雖然進度上寫處理完畢，但我 2020/11/30 測試起來問題仍在。</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://developers.facebook.com/support/bugs/1759174414250782/">https://developers.facebook.com/support/bugs/1759174414250782/</a></p>
+<p><img src="https://i.imgur.com/rbPS02Y.png"></p>
+<p>不想放棄 Facebook Comments + 深色主題的話，我的解法是把 Facebook 的 Comment 區塊直接背景變白色XD</p>
+<p><code>themes\butterfly\source\css\_layout\comments.styl</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.comment-wrap</span><br><span class="line">    &gt; div:nth-child(2)</span><br><span class="line">        background-color: white !important;</span><br><span class="line">        border-radius: 5px !important;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/bkjnPns.png"></p>
+<p>而 Disqus 則維持原本正常的深色主題</p>
+<p><img src="https://i.imgur.com/EUrCFXn.png"></p>
+<h3 id="超級無敵大雷2"><a href="#超級無敵大雷2" class="headerlink" title="超級無敵大雷2"></a>超級無敵大雷2</h3><p>原本以為這樣就高枕無憂，但 2020/11/30 的 IOS 不管是 Chrome 還是 Safari 都無法透過 Facebook Comments 留言，但桌面版、Android 的可以正常留言…</p>
+<p>狀況有2</p>
+<ol>
+<li>明明已經有登入 Facebook，但留言區抓不到，一樣要登入，可是點了登入之後就瘋狂無限白畫面跳轉。</li>
+<li>留言框自己不斷重整，無法選取打字。</li>
+</ol>
+<p>以上問題測試了 3 台 iPhone 都是這樣QQ，一開始以為是我哪裡沒處理好，但到幾個新聞網站 (水果、聯X) 的留言區測試，發現一樣有這些問題…，這個狀況目前無解。</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a><a class="post-meta__tags" href="/tags/Butterfly/">Butterfly</a><a class="post-meta__tags" href="/tags/Facebook-Comment/">Facebook Comment</a></div><div class="post_share"><div class="addtoany"><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_button_facebook"></a><a class="a2a_button_twitter"></a><a class="a2a_button_facebook_messenger"></a><a class="a2a_button_email"></a><a class="a2a_button_copy_link"></a><a class="a2a_dd" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.addtoany.com/share"></a></div></div><script async="async" src="https://static.addtoany.com/menu/page.js"></script></div></div><nav class="pagination-post" id="pagination"></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 評論</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Facebook Comments</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div class="fb-comments" data-colorscheme="dark" data-numposts="10" data-order-by="social" data-width="100%"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/photo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Ryan Lee</div><div class="author-info__description">分享科技、程式、生活、娛樂的地方</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">標籤</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hbdoy"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/hbdoy" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:felicity860128@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E9%96%8B%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text">本文開始</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pagination-%E9%A0%90%E8%A8%AD-Style-%E4%BB%A5%E5%9C%96%E7%89%87%E7%82%BA%E8%83%8C%E6%99%AF"><span class="toc-number">2.1.</span> <span class="toc-text">Pagination 預設 Style 以圖片為背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Facebook-Comments"><span class="toc-number">2.2.</span> <span class="toc-text">Facebook Comments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%85%E7%B4%9A%E7%84%A1%E6%95%B5%E5%A4%A7%E9%9B%B71"><span class="toc-number">2.2.1.</span> <span class="toc-text">超級無敵大雷1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%85%E7%B4%9A%E7%84%A1%E6%95%B5%E5%A4%A7%E9%9B%B72"><span class="toc-number">2.2.2.</span> <span class="toc-text">超級無敵大雷2</span></a></li></ol></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2020/11/30/hexo-note/" title="Hexo 建站心得">Hexo 建站心得</a><time datetime="2020-11-30T15:02:30.000Z" title="發表於 2020-11-30 23:02:30">2020-11-30</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">Ryan Lee • &copy;2020 All Rights Reserved</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直達評論"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜尋</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜尋文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://ryanlee.tw/2020/11/30/hexo-note/'
+    this.page.identifier = '2020/11/30/hexo-note/'
+    this.page.title = 'Hexo 建站心得'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hbdoy.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><div id="fb-root"></div><script>function loadFBComment () {
+  var themeNow = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+  document.getElementsByClassName('fb-comments')[0].setAttribute('data-colorscheme',themeNow)
+
+  if (typeof FB === 'object') FB.XFBML.parse()
+  else {
+    let ele = document.createElement('script')
+    ele.setAttribute('src','https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v7.0')
+    ele.setAttribute('async', 'true')
+    ele.setAttribute('defer', 'true')
+    ele.setAttribute('crossorigin', 'anonymous')
+    document.getElementById('fb-root').insertAdjacentElement('afterbegin',ele)
+  }   
+}
+
+if ('Disqus' === 'Facebook Comments' || !false) {
+  if (false) btf.loadComment(document.querySelector('#post-comment .fb-comments'), loadFBComment)
+  else loadFBComment()
+} else {
+  function loadOtherComment () {
+    loadFBComment()
+  }
+}</script></div></div></body></html>
