@@ -805,13 +805,13 @@ lazyload:
 # PWA
 # See https://github.com/JLHwung/hexo-offline
 # ---------------
-# pwa:
-#   enable: false
-#   manifest: /image/pwa/manifest.json
-#   apple_touch_icon: /image/pwa/apple-touch-icon.png
-#   favicon_32_32: /image/pwa/32.png
-#   favicon_16_16: /image/pwa/16.png
-#   mask_icon: /image/pwa/safari-pinned-tab.svg
+pwa:
+  enable: true
+  manifest: /manifest.json
+  apple_touch_icon: /img/pwa/256.png
+  favicon_32_32: /img/pwa/32.png
+  favicon_16_16: /img/pwa/16.png
+  mask_icon: /img/pwa/32.png
 
 # Disable Baidu transformation on mobile devices (禁止百度轉碼)
 disable_baidu_transformation: true

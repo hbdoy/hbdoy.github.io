@@ -106,6 +106,24 @@ search:
   field: post
   content: true
 
+# offline config passed to sw-precache.
+offline:
+  maximumFileSizeToCacheInBytes: 5242880
+  staticFileGlobs:
+    - public/**/*.{js,html,css,png,jpg,gif,svg,webp,eot,ttf,woff,woff2}
+  stripPrefix: public
+  verbose: true
+  runtimeCaching:
+    # CDNs - should be cacheFirst, since they should be used specific versions so should not change
+    - urlPattern: /*
+      handler: cacheFirst
+      options:
+        origin: cdn.pixabay.com
+    - urlPattern: /*
+      handler: cacheFirst
+      options:
+        origin: cdn.jsdelivr.net
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
