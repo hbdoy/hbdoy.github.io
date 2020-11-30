@@ -3148,9 +3148,9 @@ blockquote footer cite:before {
 #post-comment .comment-wrap > div:nth-child(2) {
   display: none;
 }
-.fb-comments {
-  background-color: #fff;
-  border-radius: 5px;
+#post-comment .comment-wrap > div:nth-child(1) {
+  background-color: #fff !important;
+  border-radius: 5px !important;
 }
 #footer {
   position: relative;
