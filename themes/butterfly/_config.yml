@@ -625,8 +625,8 @@ aside:
       text: Follow Me
       link: https://github.com/hbdoy
   card_announcement:
-    enable: false
-    content: This is my Blog
+    enable: true
+    content: 手機用戶可以添加網站快捷到主畫面，以享有更好的使用體驗😊
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all
