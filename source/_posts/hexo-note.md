@@ -51,14 +51,14 @@ SEO 大致處理
 
 ## Pagination 預設 Style 以圖片為背景
 
-![](https://i.imgur.com/rMS5m5Z.png)
+![](https://imgur.com/ZciUF7y.png)
 [圖片來源](https://jerryc.me/posts/21cfbf15/)
 
 主題預設每個 Post 都會有一個封面圖片，如果不想要可以去設定檔拿掉，但拿掉圖片，上/下一頁連結就變成高度很高，但背景是白的連結了。
 
 只想要單純的文字，像這樣的話
 
-![](https://i.imgur.com/LLCVGr4.png)
+![](https://imgur.com/PfZNzxO.png)
 
 要直接改 ``themes\butterfly\layout\includes\pagination.pug``
 
@@ -87,13 +87,13 @@ if(page.next)
 
 我網站主題是深色(Dark)，但 FaceBook Comments Dark Theme 目前壞掉，只能透過 CSS 把評論區塊背景設為白色，不然會完全看不到字 (Disqus 沒這個問題)。
 
-![](https://i.imgur.com/Lu7Qizm.png)
+![](https://imgur.com/zGv7BAv.png)
 
 看起來和 Hexo 無關，是 Facebook 的問題、也有人 2020/08/12 回報了，雖然進度上寫處理完畢，但我 2020/11/30 測試起來問題仍在。
 
 https://developers.facebook.com/support/bugs/1759174414250782/
 
-![](https://i.imgur.com/rbPS02Y.png)
+![](https://i.imgur.com/6QZkv1C.png)
 
 不想放棄 Facebook Comments + 深色主題的話，我的解法是把 Facebook 的 Comment 區塊直接背景變白色XD
 
@@ -106,11 +106,11 @@ https://developers.facebook.com/support/bugs/1759174414250782/
         border-radius: 5px !important;
 ```
 
-![](https://i.imgur.com/bkjnPns.png)
+![](https://i.imgur.com/STYzbcG.png)
 
 而 Disqus 則維持原本正常的深色主題
 
-![](https://i.imgur.com/EUrCFXn.png)
+![](https://i.imgur.com/tfiVAJ1.png)
 
 
 ### 超級無敵大雷2
