@@ -107,7 +107,7 @@ Cookie 是可以讀取的，畢竟是同一個網址，退一步來說就算是�
 2. File System
 3. DB
 
-詳情參考 [設定 ASP.NET Core 資料保護](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/configuration/overview)
+> 詳情參考 [設定 ASP.NET Core 資料保護](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/configuration/overview)
 
 請依照專案環境選擇合適的方式，像是兩個站台都建在同一台 Server 上，可以考慮存到 File System；反之可以存到 DB 比較方便。
 
@@ -217,7 +217,11 @@ GO
 2. X.509 憑證
 3. 自訂
 
-有興趣請參考 [NET Core 的待用金鑰加密](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/implementation/key-encryption-at-rest)
+若以保存到 File System 為例，XML 打開會看到警示: ``Warning: the key below is in an unencrypted form.``。
+
+![Image](https://i.imgur.com/eMJxVp0.png)
+
+> 詳情參考 [NET Core 的待用金鑰加密](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/implementation/key-encryption-at-rest)
 
 # 結語
 我最後選擇透過 EF Core 將金鑰存到 DB，設定共用的金鑰後，也成功讓正式與備援站台讀取彼此的驗證 Cookie 達到不停機過版的效果，當然未來如果 I/O 遇到效能瓶頸，可能會考慮存到 Redis。
