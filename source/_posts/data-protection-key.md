@@ -21,7 +21,7 @@ comments:
 2. 基於非對稱的加密機制
 3. 正常情況下，不需要去設定與管理任何密鑰的儲存位置與生命週期
 
-> 若想了解更多請參考 [ASP.NET Core 資料保護](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/introduction)
+> 若想了解更多請參考 [ASP.NET Core 資料保護](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction)
 
 簡單來說你想加解密資料時，可以直接使用 Data Protection 的 API：
 - Protect
@@ -31,7 +31,7 @@ comments:
 1. 搞不清楚「對稱、非對稱加密、Hash、編碼」的差異下，選擇了錯誤的方式來保護敏感資料。
 2. 自己造輪子實作加解密...
 
-> 若想了解更多請參考 [ASP.NET Core 中的資料保護 Api 入門](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/using-data-protection)
+> 若想了解更多請參考 [ASP.NET Core 中的資料保護 Api 入門](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/using-data-protection)
 
 # 本文開始
 在 Net Framework 時代，透過 MachineKey 來處理 Forms Authentication 的 Cookie 加解密（當然正常情況下也不會去動到 MachineKey，都交由系統處理）。
@@ -56,7 +56,7 @@ Cookie 是可以讀取的，畢竟是同一個網址，退一步來說就算是�
 顯然地，備援站台因為 Key 不對，無法解開主站台留下的 Cookie，所以問題收斂成需要搞懂：
 1. Data Protection 的金鑰保存在哪?
 2. 金鑰多久會過期?
-2. 我要怎麼讓不同站台共用金鑰?
+3. 我要怎麼讓不同站台共用金鑰?
 
 # Data Protection 金鑰管理與生命週期
 該來的還是得來，啃了官方~~又香又長~~的文件。
@@ -76,7 +76,7 @@ Cookie 是可以讀取的，畢竟是同一個網址，退一步來說就算是�
 
 > 補充一下實驗結果，如果集區回收可以接受金鑰遺失，而閒置不想要因為後續行為遺失的話，動作由 Terminate 改為 Suspend（凍結）、或是閒置時間直接改為 0 分鐘（不終止也不凍結），則不會導致記憶體中的金鑰遺失。
 
-所以如果在 IIS 下想要保存金鑰，有[多種](https://docs.microsoft.com/zh-tw/aspnet/core/host-and-deploy/iis/advanced#data-protection)設定方式，以下列兩種較方便的設定方式：
+所以如果在 IIS 下想要保存金鑰，有[多種](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/advanced#data-protection)設定方式，以下列兩種較方便的設定方式：
 1. 建立 Data Protection Registry keys，將金鑰放在 HKLM 機碼中，並限定該集區的帳戶才能存取。
 2. (推薦)
 設定 IIS 應用程式集區載入使用者設定檔，金鑰會存在 ``%LOCALAPPDATA%\ASP.NET\DataProtection-Keys`` 資料夾中。
@@ -107,7 +107,7 @@ Cookie 是可以讀取的，畢竟是同一個網址，退一步來說就算是�
 2. File System
 3. DB
 
-> 詳情參考 [設定 ASP.NET Core 資料保護](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/configuration/overview)
+> 詳情參考 [設定 ASP.NET Core 資料保護](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview)
 
 請依照專案環境選擇合適的方式，像是兩個站台都建在同一台 Server 上，可以考慮存到 File System；反之可以存到 DB 比較方便。
 
@@ -123,14 +123,14 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-> 關於 SetApplicationName 有興趣請參考 [應用程式隔離](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/configuration/overview#per-application-isolation)
+> 關於 SetApplicationName 有興趣請參考 [應用程式隔離](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview#per-application-isolation)
 
 ## Database
 Key Storage Providers 也有常見的解決方案可以選擇
 1. Entity Framework Core
 2. Redis
 
-> 至於其他 Providers 有興趣請參考 [ASP.NET Core 中的金鑰儲存提供者](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/implementation/key-storage-providers)
+> 至於其他 Providers 有興趣請參考 [ASP.NET Core 中的金鑰儲存提供者](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/implementation/key-storage-providers)
 
 寫法如下：
 1. NuGet 下載 ``Microsoft.AspNetCore.DataProtection.EntityFrameworkCore``
@@ -221,7 +221,7 @@ GO
 
 ![Image](https://i.imgur.com/eMJxVp0.png)
 
-> 詳情參考 [NET Core 的待用金鑰加密](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/implementation/key-encryption-at-rest)
+> 詳情參考 [NET Core 的待用金鑰加密](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/implementation/key-encryption-at-rest)
 
 # 結語
 我最後選擇透過 EF Core 將金鑰存到 DB，設定共用的金鑰後，也成功讓正式與備援站台讀取彼此的驗證 Cookie 達到不停機過版的效果，當然未來如果 I/O 遇到效能瓶頸，可能會考慮存到 Redis。
@@ -231,17 +231,17 @@ GO
 文中內容若有錯誤的地方，請不吝告知。
 
 # 參考連結
-[設定 ASP.NET Core 資料保護](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/configuration/overview)
+[設定 ASP.NET Core 資料保護](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview)
 
-[Windows 和 Azure 中使用 ASP.NET Core 的待用金鑰加密](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/implementation/key-encryption-at-rest)
+[Windows 和 Azure 中使用 ASP.NET Core 的待用金鑰加密](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/implementation/key-encryption-at-rest)
 
-[ASP.NET Core 中的金鑰儲存提供者](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/implementation/key-storage-providers)
+[ASP.NET Core 中的金鑰儲存提供者](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/implementation/key-storage-providers)
 
-[ASP.NET Core 中的資料保護金鑰管理和存留期](https://docs.microsoft.com/zh-tw/aspnet/core/security/data-protection/configuration/default-settings)
+[ASP.NET Core 中的資料保護金鑰管理和存留期](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/default-settings)
 
-[ASP.NET Core 模組和 IIS 的 Advanced configuration](https://docs.microsoft.com/zh-tw/aspnet/core/host-and-deploy/iis/advanced?view=aspnetcore-5.0#data-protection)
+[ASP.NET Core 模組和 IIS 的 Advanced configuration](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/advanced?view=aspnetcore-5.0#data-protection)
 
-[cookie在 ASP.NET apps 之間共用驗證](https://docs.microsoft.com/zh-tw/aspnet/core/security/cookie-sharing)
+[cookie在 ASP.NET apps 之間共用驗證](https://docs.microsoft.com/en-us/aspnet/core/security/cookie-sharing)
 
 [How to distribute Data Protection keys with an ASP.NET Core web app](https://medium.com/swlh/how-to-distribute-data-protection-keys-with-an-asp-net-core-web-app-8b2b5d52851b)
 
