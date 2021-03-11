@@ -21,8 +21,6 @@ comments:
 2. 基於非對稱的加密機制
 3. 正常情況下，不需要去設定與管理任何密鑰的儲存位置與生命週期
 
-> 若想了解更多請參考 [ASP.NET Core 資料保護](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction)
-
 簡單來說你想加解密資料時，可以直接使用 Data Protection 的 API：
 - Protect
 - Unprotect
@@ -31,7 +29,7 @@ comments:
 1. 搞不清楚「對稱、非對稱加密、Hash、編碼」的差異下，選擇了錯誤的方式來保護敏感資料。
 2. 自己造輪子實作加解密...
 
-> 若想了解更多請參考 [ASP.NET Core 中的資料保護 Api 入門](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/using-data-protection)
+> 了解更多 [ASP.NET Core 資料保護](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/introduction)、[ASP.NET Core 中的資料保護 Api 入門](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/using-data-protection)
 
 # 本文開始
 在 Net Framework 時代，透過 MachineKey 來處理 Forms Authentication 的 Cookie 加解密（當然正常情況下也不會去動到 MachineKey，都交由系統處理）。
@@ -107,9 +105,9 @@ Cookie 是可以讀取的，畢竟是同一個網址，退一步來說就算是�
 2. File System
 3. DB
 
-> 詳情參考 [設定 ASP.NET Core 資料保護](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview)
-
 請依照專案環境選擇合適的方式，像是兩個站台都建在同一台 Server 上，可以考慮存到 File System；反之可以存到 DB 比較方便。
+
+> 了解更多 [設定 ASP.NET Core 資料保護](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview)
 
 ## File System
 存到系統上非常簡單，只需要寫
@@ -123,14 +121,14 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-> 關於 SetApplicationName 有興趣請參考 [應用程式隔離](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview#per-application-isolation)
+> 了解更多 [SetApplicationName 應用程式隔離](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview#per-application-isolation)
 
 ## Database
 Key Storage Providers 也有常見的解決方案可以選擇
 1. Entity Framework Core
 2. Redis
 
-> 至於其他 Providers 有興趣請參考 [ASP.NET Core 中的金鑰儲存提供者](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/implementation/key-storage-providers)
+> 了解更多 [ASP.NET Core 中的金鑰儲存提供者](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/implementation/key-storage-providers)
 
 寫法如下：
 1. NuGet 下載 ``Microsoft.AspNetCore.DataProtection.EntityFrameworkCore``
@@ -221,7 +219,7 @@ GO
 
 ![Image](https://i.imgur.com/eMJxVp0.png)
 
-> 詳情參考 [NET Core 的待用金鑰加密](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/implementation/key-encryption-at-rest)
+> 了解更多 [NET Core 的待用金鑰加密](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/implementation/key-encryption-at-rest)
 
 # 結語
 我最後選擇透過 EF Core 將金鑰存到 DB，設定共用的金鑰後，也成功讓正式與備援站台讀取彼此的驗證 Cookie 達到不停機過版的效果，當然未來如果 I/O 遇到效能瓶頸，可能會考慮存到 Redis。
