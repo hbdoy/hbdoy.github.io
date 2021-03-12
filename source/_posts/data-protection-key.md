@@ -105,30 +105,29 @@ Cookie 是可以讀取的，畢竟是同一個網址，退一步來說就算是�
 2. File System
 3. DB
 
-請依照專案環境選擇合適的方式，像是兩個站台都建在同一台 Server 上，可以考慮存到 File System；反之可以存到 DB 比較方便。
-
-> 了解更多 [設定 ASP.NET Core 資料保護](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview)
+請依照專案環境選擇[合適的方式](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview)，像是兩個站台都建在同一台 Server 上，可以考慮存到 File System；反之可以存到 DB 比較方便。
 
 ## File System
-存到系統上非常簡單，只需要寫
+存到系統上非常簡單，如下配置後，就能夠將上述提到的 xml 存到指定路徑。
 ```C#
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddDataProtection()
         .PersistKeysToFileSystem(new DirectoryInfo(Configuration["YourFilePath"]))
         .SetApplicationName("YourApplicationName");
-        // 請把所有想要共用同個金鑰的應用程式都指定相同的 Application Name，不然就算吃到相同的金鑰，也會因為 Net Core 應用程式隔離的特性無法成功加解密
+        // 請把所有想要共用同個金鑰的應用程式都指定相同的 Application Name，
+        // 不然就算吃到相同的金鑰，也會因為 Net Core 應用程式隔離的特性無法成功加解密
 }
 ```
 
 > 了解更多 [SetApplicationName 應用程式隔離](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview#per-application-isolation)
 
 ## Database
-Key Storage Providers 也有常見的解決方案可以選擇
+Key Storage Providers 也有[常見的解決方案](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/implementation/key-storage-providers)可以選擇
 1. Entity Framework Core
 2. Redis
 
-> 了解更多 [ASP.NET Core 中的金鑰儲存提供者](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/implementation/key-storage-providers)
+這邊選擇透過 EF Core 存到 DB 
 
 寫法如下：
 1. NuGet 下載 ``Microsoft.AspNetCore.DataProtection.EntityFrameworkCore``
@@ -176,6 +175,10 @@ public void ConfigureServices(IServiceCollection services)
 dotnet ef migrations add AddDataProtectionKeys --context MyKeysContext
 dotnet ef database update --context MyKeysContext
 ```
+
+存到 DB 其實只是把 xml 內容存進去而已，沒有做特別改動
+
+![Image](https://i.imgur.com/twJWzAv.png)
 
 ## DB First 解決方法
 基本上就是這樣，如果有問題的話大概就是第四步，因為我們專案 EF Core 是採 DB First 形式，還是可以解決，只是會有兩種方法：
