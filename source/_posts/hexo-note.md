@@ -12,6 +12,8 @@ updated:
 keywords:
 description:
 comments:
+top_img: https://i.imgur.com/WLpJeTu.png
+cover: https://i.imgur.com/WLpJeTu.png
 ---
 
 # 前言
