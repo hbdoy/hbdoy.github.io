@@ -42,7 +42,10 @@ copy:
 # formal:
 #   icon: link || the description
 social:
-  fab fa-github: https://github.com/hbdoy || Github
+  fas fa-address-card: https://www.cakeresume.com/kjosr || Resume
+  fas fa-book: https://hackmd.io/@hbdoy || HackMD
+  fas fa-desktop: https://ithelp.ithome.com.tw/users/20112093/ironman/1854 || ITHelp
+  # fab fa-github: https://github.com/hbdoy || Github
   fas fa-envelope: mailto:felicity860128@gmail.com || Email
 
 # search (搜索)
