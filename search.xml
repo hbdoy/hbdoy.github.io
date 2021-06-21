@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>愛用瀏覽器自動填入? 小心個資外洩!</title>
+      <link href="2021/06/20/security-risk-of-autofill/"/>
+      <url>2021/06/20/security-risk-of-autofill/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>瀏覽器能夠儲存使用者經常填入的各種資訊，舉凡帳號、密碼、Email、姓名、電話、地址、信用卡資訊…等等。</p><p>帳號密碼可能不一定會儲存，但 Email、姓名、電話之類的個資，應該很多人會選擇讓瀏覽器記憶，避免每次填寫樸實又枯燥乏味的表單要一直重複輸入。</p><p>但是在理解瀏覽器 autocomplete 觸發機制後，你還敢直接填入你的資訊嗎?</p><p>以一個只有 Email 的表單為例，你以為只有填入 Email，實際上所有紀錄的個資，都可以被心懷不軌的網站拿到。</p><p>不囉嗦，直接弄個 Demo 網站看效果: <a href="https://ryanlee.tw/security-risk-of-autofill-demo">https://ryanlee.tw/security-risk-of-autofill-demo</a></p><h1 id="本文開始"><a href="#本文開始" class="headerlink" title="本文開始"></a>本文開始</h1><p>瀏覽器儲存的資訊看起來很多，但其實就是三個種類，以 Chrome 為例</p><p><img src="https://i.imgur.com/qYskUcE.png" alt="Image"></p><ol><li><strong>密碼</strong>: 會綁定網站 Domain，只能夠自動填入相同網址下紀錄的帳密，所以不會發生 A 網站登入，卻填入 B 網站的帳密。</li></ol><p><img src="https://i.imgur.com/TrngHLI.png" alt="Image"></p><ol start="2"><li><strong>付款方式</strong>: 儲存信用卡資訊(卡號、到期日、持卡人姓名)，要在 https 的網站下才會觸發自動填入。</li></ol><p><img src="https://i.imgur.com/ft7dDbQ.png" alt="Image"></p><ol start="3"><li>(本文主要討論)<strong>地址和其他資訊</strong>: 國家、郵遞區號、地址、姓名、電話、Email。</li></ol><p><img src="https://i.imgur.com/i10XPqF.png" alt="Image"></p><h2 id="autocomplete"><a href="#autocomplete" class="headerlink" title="autocomplete"></a>autocomplete</h2><p>那站在開發者的角度，該如何讓瀏覽器知道 input 可以填入什麼資訊呢?</p><p>其實很簡單，就設定 input 的 <code>name</code> 或 <code>autocomplete</code> attribute 就好</p><p><img src="https://i.imgur.com/fQ8YXDo.png" alt="Image"></p><p>常見的 attribute 如下(<a href="https://developers.google.com/web/fundamentals/design-and-ux/input/forms">來源</a>):</p><table><thead><tr><th>Content type</th><th>name attribute</th><th>autocomplete attribute</th></tr></thead><tbody><tr><td>Name</td><td>name fname mname lname</td><td>name (full name)、 given-name (first name)、 additional-name (middle name)、 family-name (last name)</td></tr><tr><td>Email</td><td>email</td><td>email</td></tr><tr><td>Address</td><td>address city region province state zip zip2 postal country</td><td>For one address input: street-address、 For two address inputs: address-line1 address-line2、 address-level1 (state or province)、 address-level2 (city)、 postal-code (zip code)、 country</td></tr><tr><td>Phone</td><td>phone mobile country-code area-code exchange suffix ext</td><td>tel</td></tr><tr><td>Credit Card</td><td>ccname cardnumber cvc ccmonth ccyear exp-date card-type</td><td>cc-name cc-number cc-csc cc-exp-month cc-exp-year cc-exp cc-type</td></tr><tr><td>Usernames</td><td>username</td><td>username</td></tr><tr><td>Passwords</td><td>password</td><td>current-password (for sign-in forms)、 new-password (for sign-up and password-change forms)</td></tr></tbody></table><p>具體可看 WHATWG 制定的<a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill">規範</a></p><h2 id="隱藏-input"><a href="#隱藏-input" class="headerlink" title="隱藏 input"></a>隱藏 input</h2><p>文章一開始的 Demo 網站，其實也只是設定好這些屬性，然後把他們「隱藏」起來。</p><p>至於該怎麼隱藏呢?</p><p>如果你試著把 input 設為 <code>display: none</code>、<code>visibility: hidden</code>、<code>input type=&quot;hidden&quot;</code> 這幾種，會發現瀏覽器不會自動填入他們。</p><p>但如果不要這種隱藏，而是調整成只有使用者看不到的那種隱藏，就可以了XD</p><p>把框線隱藏、長寬設為 0(還是會有一小點)、設定 margin 讓他直接超出螢幕。</p><p><img src="https://i.imgur.com/TuwlhcI.png" alt="Image"></p><h2 id="危害範圍"><a href="#危害範圍" class="headerlink" title="危害範圍"></a>危害範圍</h2><p>Chrome、Edge、Safari 當你自動填入個資時，會順便填入所有能夠對應的個人資訊。</p><p>好消息是帳號密碼、付款方式各自獨立，所以不會填入。</p><p>至於 Firefox 也能夠自動填入，但它需要使用者逐個控制項選擇填入，所以不會發生上述問題。</p><p>以 Chrome 為例，根本不知道實際填入了哪些資訊</p><p><img src="https://i.imgur.com/GNmKUGi.png" alt="Image"></p><p>儘管有些瀏覽器可能會顯示實際填入的資訊，但使用者會認真停下來幾秒鐘檢查的又有多少呢?</p><p>又或者，如果有紀錄多個 Email 的情況下，跳出了詳細資訊，大多也會以為瀏覽器顯示詳細訊息，是為了讓你分辨兩筆資料的差別吧…</p><h3 id="市佔率"><a href="#市佔率" class="headerlink" title="市佔率"></a>市佔率</h3><p>以 <a href="https://netmarketshare.com/browser-market-share.aspx">Net Applications</a> 調查為例</p><p>在 Desktop 下，Chrome 的使用率接近 7 成</p><p><img src="https://i.imgur.com/jP6eZ3O.png" alt="Image"></p><p>在 Mobile 下，Chrome 的使用率也穩居 6 成</p><p><img src="https://i.imgur.com/RSFTsSA.png" alt="Image"></p><p>顯然這個問題影響著很大一部份的使用者。</p><h2 id="防範措施"><a href="#防範措施" class="headerlink" title="防範措施"></a>防範措施</h2><p>那到底該如何避免不想要的資訊被網站拿走呢?</p><ol><li>只在信任的網站自動填入</li><li>乾脆不用自動填入，或是只記錄你覺得洩漏也無所謂的資訊</li><li>使用能夠幫助你檢查表單填入資訊的瀏覽器</li><li>送出表單前，檢查網頁原始碼</li></ol><p>不過最重要的準則，還是只有一個，就是「不管帳號密碼、付款方式、個資，都只儲存你覺得洩漏也無所謂的資訊，不要覺得存在瀏覽器裡面很安全，要抱持著它總有一天會洩漏的心態來使用它」。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Security </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> browser </tag>
+            
+            <tag> autofill </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ASP.NET Core Model Binding 死活綁不上 - 1</title>
       <link href="2021/05/12/aspnetcore-model-binding/"/>
       <url>2021/05/12/aspnetcore-model-binding/</url>
