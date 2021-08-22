@@ -1,5 +1,5 @@
 ---
-title: Fiddler HTTP 抓包能手 & 常見「特殊」用途
+title: 玩轉 Fiddler－HTTP(s) 抓包 & 常見「特殊」用途
 date: 2021-08-08 20:51:22
 categories:
 - DevTools
@@ -224,5 +224,24 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 
 還有些有趣的選項也可以試試看，像是讓特定的請求 delay、drop、redirect。
 
+### QuickExec 打指令
+如果你當下只是要讓特定的 URL 進中斷點 Debug，除了上面提到的 Global 與 AutoResponder 以外，也可以考慮輸入指令的方式。
 
+還記得上面提到的 ``bpu``、``bpafter`` 嗎?
 
+其實可以把指令直接打在最下方的黑色框框中（QuickExec）
+
+![Image](https://i.imgur.com/U2Q0kb5.png)
+
+像是我要卡住指定 URL 的 Request 就可以這樣打，打完按下 Enter
+
+![Image](https://i.imgur.com/RVoe1bB.png)
+
+就會在右下角出現當前的指令 & URL，如果想要清除指令的話，就再打一次 ``bpu``，然後不要加任何 URL，這樣就能清空上一條指令了。 
+
+![Image](https://i.imgur.com/CbaYuJo.png)
+
+#### 補充
+其他支援的指令如下
+
+![Image](https://i.imgur.com/jCD6gvu.png)
