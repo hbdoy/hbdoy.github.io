@@ -1,5 +1,5 @@
 ---
-title: Fiddler：HTTP 抓包能手 & 常見「特殊」用途
+title: Fiddler HTTP 抓包能手 & 常見「特殊」用途
 date: 2021-08-08 20:51:22
 categories:
 - DevTools
@@ -15,11 +15,13 @@ comments:
 ---
 ## 前言
 你是否曾經有這些困擾呢?
-1. 戳 API 想要修改前端 Request 送出去的 json，但 JS 被 uglify 很難追、或是開 Postman 但要處理認證、授權、和整包 json 很麻煩。
+1. 戳 API 想要修改前端 Request 送出去的 json，但 JS 被 uglify 很難追、或是開 Postman 但要處理認證、授權、和整包 JSON 很麻煩。
 2. 承上，想看的是 UI 與 JS 後續行為，Postman 愛莫能助。
-3. 在 local 調整完檔案（HTML、CSS、JS、Image...etc），想上到**正式環境**測試一下效果，但又不想真的改到正式環境的檔案?
-4. 修改 Response 回傳的資料（EX: 修改**後端 API** 回傳的使用者權限、查詢結果、新增成功與否...etc，導致前端畫面上的變化）。
-5. IDE 都可以下中斷點，不管啦，我的每個 HTTP Request & Response 也要可以下中斷點，即時查看、修改、決定要不要 drop 掉封包。
+3. 想測試後端驗證，但前端已經
+有驗證，想測試還要先拔掉前端驗證的 code。
+4. 在 Local 調整完檔案（HTML、CSS、JS、Image...etc），想上到**正式環境**測試一下效果，但又不想真的改到正式環境的檔案?
+5. 修改 Response 回傳的資料（EX: 修改**後端 API** 回傳的使用者權限、查詢結果、新增成功與否...etc，導致前端畫面上的變化）。
+6. IDE 都可以下中斷點，不管啦，我的每個 HTTP Request & Response 也要可以下中斷點，即時查看、修改、決定要不要 drop 掉封包。
 
 如果有任一個需求符合，用 Fiddler 就對了!
 
@@ -28,7 +30,7 @@ comments:
 2. 實際抓包操作 & 過濾不需要的內容
 3. 設定 AutoResponder 自訂（修改）回傳內容
 4. 中斷每個 Request 或 Response 的方法
-5. 介紹一些「特殊」的用途（請守法，未經許可下，不要試圖做出損害他人權利之行為）
+5. 介紹一些「特殊」的用途（未經許可下，不要試圖做出侵害他人權利之行為）
 
 ## 什麼是 Fiddler
 老樣子，我們先看[維基百科](https://zh.wikipedia.org/wiki/Fiddler)的定義
@@ -53,7 +55,7 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 
 如果是想要調試 API，雖然 Fiddler 也可以做到，但 UI/UX 與相關功能的完整性，還是 Postman 會好一些。
 
-如果是要對封包進行截取、重發、編輯等等操作，則使用 Fiddler。
+如果是要對封包進行截取、重發、編輯等等操作，或是要側錄手機上 APP 的封包，則使用 Fiddler。
 
 ### Fiddler 版本
 這邊說的 Fiddler 以及接下來的示範，都會使用 Fiddler Classic 版本。
@@ -94,7 +96,7 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 ![Image](https://i.imgur.com/4sJrxYr.png)
 
 ### 開始抓包
-可以按 F12，或是左上角的 File > Capture Traffic，或者是點一下左下角紅色框框處(沒有在抓的時候什麼圖案都不會有，但還是可以點一下空白處啟動)。
+可以按 F12，或是左上角的 File > Capture Traffic，或者是點一下左下角紅色框框處(沒有在抓的時候什麼圖案都不會有，但還是可以點一下空白處啟動)，啟動會顯示 Capturing。
 
 ![Image](https://i.imgur.com/COFpcwG.png)
 
@@ -115,13 +117,112 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 
 最基本的設定就是指定 Hosts，多個 Hosts 可以用「;」隔開。
 
-進階一點的話，可以研究一下 Hosts 區塊下方的選項，像是可以指定哪個 Process 的流量、只顯示符合設定規則的 Request 或 Response、也能夠偵測到特定的 Request 就自動進中斷點(中斷點後面會講)。
+進階一點的話，可以研究一下 Hosts 區塊下方的選項，像是可以指定哪個 Process 的流量、只顯示符合設定規則的 Request 或 Response、也能夠偵測到特定的 Request 就自動進中斷點（中斷點後面會講）。
 
 ![Image](https://i.imgur.com/p9YQNVV.png)
 
 ### 調試 API
-前面有提到了，如果想要像 Postman 那樣發請求也是可以的，切換頁籤到 Composer 即可，發送的請求也會出現在左邊區塊的紀錄裡面。
+如果想要像 Postman 那樣發請求，Fiddler 也是可以做到的。
+
+切換頁籤到 Composer 即可，發送的請求也會出現在左邊區塊的紀錄裡面。
 
 ![Image](https://i.imgur.com/IHyd7Eh.png)
 
 ## 修改封包
+介紹的時候有提到，Fiddler 就像是郵差一樣，可以修改寄件者與收件者的信件內容。
+
+修改的方式如同 IDE 中斷點一樣，可以決定是要卡住 Request 還是 Response，卡住後可以修改裡面的內容，改完再放行。
+
+進中斷點（以 Response 為例），可以修改原先預期回傳的內容，不管是 HTML、CSS、JS、JSON 都可以（紅 1），也可以修改回傳的 HTTP Status Code（紅 2），確定後，就點 Run to Completion（紅 3）讓封包繼續傳給 Client 端（EX: Browser）。
+
+![Image](https://i.imgur.com/1p9juay.png)
+
+除了修改內容或是 HTTP Status Code 以外，Choose Response 最下面有一個「Find a file」，點了之後可以選擇一個 Local 端的檔案，取代掉原本回傳的內容。
+
+這個在開發測試滿好用的，像是你改了新的一版 JS，Local 簡單測試沒有問題後，想上到正式環境看一下效果，但又怕修改的 JS 有問題，那就可以考慮這種方法，連到正式機的網頁，然後攔截舊版 JS，替換成新的 JS。
+
+![Image](https://i.imgur.com/KWl5dbR.png)
+
+#### 補充
+如果想要把所有卡住的請求都直接放行，可以點快速功能中的「Go」
+
+![Image](https://i.imgur.com/2HtjTOX.png)
+
+### 範例情境
+呼應一下**前言**提到的情境，都是下中斷點可以解決的。
+
+**卡 Request**
+- 戳 API 想要修改前端 Request 送出去的 json，但 JS 被 uglify 很難追、或是開 Postman 但要處理認證、授權、和整包 JSON 很麻煩。
+- 承上，想看的是 UI 與 JS 後續行為，Postman 愛莫能助。
+- 想測試後端驗證，但前端已經
+有驗證，想測試還要先拔掉前端驗證的 code。
+
+**卡 Response**
+- 在 Local 調整完檔案（HTML、CSS、JS、Image...etc），想上到**正式環境**測試一下效果，但又不想真的改到正式環境的檔案?
+- 修改 Response 回傳的資料（EX: 修改**後端 API** 回傳的使用者權限、查詢結果、新增成功與否...etc，導致前端畫面上的變化）。
+
+### 中斷點設定方式
+中斷點有以下幾種設定方式：
+1. Global 層級下中斷點
+2. 設定 AutoResponder
+3. QuickExec 打指令
+4. Filter 簡單規則自動進中斷點
+
+### Global 直接開啟 Automatic breakpoints
+顧名思義，開啟後所有的 Request 或 Response 都會進入中斷點，在設定好 Filter 不會有太多不相干流量的情況下，也是滿好用的，不用在特別設定什麼規則。
+
+開啟的方式可以選單點，或是 F11 快捷鍵。
+
+![Image](https://i.imgur.com/n7Z8S2O.png)
+
+![Image](https://i.imgur.com/1s5M74Z.png)
+
+以 Before Request 為例，勾選後最下面的狀態欄是一個向上的箭頭，代表作用中。
+
+![Image](https://i.imgur.com/gu1BzvL.png)
+
+也可以點一下，變成 After Response，是一個向下的箭頭（很不明顯XD）。
+
+![Image](https://i.imgur.com/22sLdkA.png)
+
+### 設定 AutoResponder
+如果有這些情況，就可以用 AutoResponder。
+1. 不想要無差別卡中斷點，只需要特定的 Request。
+2. 或是自動套用 Response 的修改設定。
+
+像是上面有提到的替換 JS，總不可能同一個 JS 檔案，每次重新整理網頁後，都要手動再選擇一次。
+
+所以 AutoResponder 可以理解為，針對某個符合條件的網址，就按照寫好的規則自動修改它的 Response。
+
+![Image](https://i.imgur.com/CJk6e2Q.png)
+
+設定步驟
+1. 切換到【紅 1】頁籤
+2. 勾選【紅 2】 啟用自訂規則
+3. 勾選【紅 3】很重要！它的意思是沒有符合條件的網址，會直接略過，否則那些不符合條件的請求都會無法送出。
+
+![Image](https://i.imgur.com/N4ti2xc.png)
+
+4. 【紅 4】點選添加規則，會在【紅 5】出現，能夠設定的條件如下，可以寫正則式、指定 URL、指定 URL & HTTP Method...etc。
+
+像是圖中範例，我直接寫一個網址也可以XD
+
+![Image](https://i.imgur.com/WFEDZF0.png)
+
+5. 最後就是設定要自動調整的 Response 內容了，和上面提到的差不多，可以選擇回傳的狀態碼，或是是想要回傳自訂檔案的話，點最後的「Find a file」。
+
+![Image](https://i.imgur.com/d8BlxwE.png)
+
+如果是想要調整 Response 內容的話，點倒數第二個「Create New Response」，然後在跳出的視窗中，編寫你自己需要的 Response Headers、Cookies、JSON...etc。
+
+![Image](https://i.imgur.com/bqh3Yka.png)
+
+#### 補充
+如果你在 AutoResponder 想要的是，讓特定的 Request or Response 進中斷點，這也是可以做到的，只要選擇「bpu」或「bpafter」，前者是卡 Request，後者是 Response。這樣只要符合條件的請求，就會如同上面提到的 Global 中斷點那樣，可以即時操作修改。
+
+![Image](https://i.imgur.com/fWb7GzK.png)
+
+還有些有趣的選項也可以試試看，像是讓特定的請求 delay、drop、redirect。
+
+
+
