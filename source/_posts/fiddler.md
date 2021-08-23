@@ -13,7 +13,7 @@ keywords:
 description:
 comments:
 ---
-## 前言
+# 前言
 你是否曾經有這些困擾呢?
 1. 戳 API 想要修改前端 Request 送出去的 JSON，但 JS 被 uglify 很難追、或是開 Postman 但要處理認證、授權、和整包 JSON 很麻煩。
 2. 承上，想看的是 UI 與 JS 後續行為，Postman 愛莫能助。
@@ -26,7 +26,7 @@ comments:
 
 > PS. 以下文長慎入，可以選擇自己需要的內容閱讀就好。
 
-### 本文內容：
+## 本文內容：
 1. 什麼是 Fiddler，和 Postman、Wireshark 的差異?
 2. 實際抓包操作 & 過濾不需要的內容
 3. 設定 AutoResponder 自訂（修改）回傳內容
@@ -34,20 +34,20 @@ comments:
 5. 實戰演練，Fiddler 抓不到特定應用程式的封包？
 6. 介紹一些「特殊」的用途（未經許可下，不要做出侵害他人權利之行為）
 
-## 什麼是 Fiddler
+# 什麼是 Fiddler
 老樣子，我們先看[維基百科](https://zh.wikipedia.org/wiki/Fiddler)的定義
 > Fiddler 是一個用於 HTTP 調試的代理伺服器應用程式
 
 也就是說，他能夠抓取並記錄 HTTP 流量，而 HTTPS 也可以利用自簽名證書實現 Man-in-the-middle attack 進行記錄。
 
-### 運作流程
+## 運作流程
 ![Image](https://i.imgur.com/eC9mrmw.png)
 
 Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fiddler 進行轉發，此時他以代理伺服器的方式存在。
 
 白話一點來講，可以把圖中的 Fiddler 當成送信的郵差，只要他願意，他可以偷看寄件者寫了什麼東西，甚至是串改信件內容，而收件者回信時，也可以偷看&串改。
 
-### 常見工具比較
+## 常見工具比較
 1. Wireshark：擷取各種網路封包，除了 HTTP，也可以看其他協議如 TCP、UDP、Socket...etc。
 2. Postman：用於調試 API，能夠發送 HTTP 請求與接收回傳結果。
 3. 瀏覽器開發者工具：單純只看 Network 的話，也可以擷取 HTTP Request & Response
@@ -59,7 +59,7 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 
 如果是要對封包進行截取、重發、編輯等等操作，或是要側錄手機上 APP 的封包，則使用 Fiddler。
 
-### Fiddler 版本
+## Fiddler 版本
 這邊說的 Fiddler 以及接下來的示範，都會使用 Fiddler Classic 版本。
 
 1. Fiddler Classic：只能在 Windows 執行，免費使用，功能齊全，但介面對新手比較不友善。
@@ -76,10 +76,10 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 
 若是軟體有幫助到你，而價錢也可以接受的話，與其花時間找其他免費的替代方案，不妨可以直接付費支持，讓作者未來繼續開發新功能。
 
-## 實際操作
+# 實際操作
 講了那麼多，來看一下怎麼使用吧。
 
-### 安裝信任憑證(Trust root certificate)以擷取 HTTPS 流量
+## 安裝信任憑證(Trust root certificate)以擷取 HTTPS 流量
 想要抓取 HTTPS 流量的話，要先進行以下設定
 
 ![Image](https://i.imgur.com/LpuHmfC.png)
@@ -97,7 +97,7 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 
 ![Image](https://i.imgur.com/4sJrxYr.png)
 
-### 開始抓包
+## 開始抓包
 可以按 F12，或是左上角的 File > Capture Traffic，或者是點一下左下角紅色框框處(沒有在抓的時候什麼圖案都不會有，但還是可以點一下空白處啟動)，啟動會顯示 Capturing。
 
 ![Image](https://i.imgur.com/COFpcwG.png)
@@ -114,7 +114,7 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 
 ![Image](https://i.imgur.com/UW1OwYH.png)
 
-### 過濾
+## 過濾
 開始抓包後，應該很快就會有一個困擾，設備上所有 HTTP 流量都會被記錄在上面，雜亂到難以查找，有時候你只是想看一個單一的網站、或是任何 Client 端的程式軟體，如果是這樣的話，可以設定 Filter 規則。
 
 最基本的設定就是指定 Hosts，多個 Hosts 可以用「;」隔開。
@@ -123,14 +123,14 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 
 ![Image](https://i.imgur.com/p9YQNVV.png)
 
-### 調試 API
+## 調試 API
 如果想要像 Postman 那樣發請求，Fiddler 也是可以做到的。
 
 切換頁籤到 Composer 即可，發送的請求也會出現在左邊區塊的紀錄裡面。
 
 ![Image](https://i.imgur.com/IHyd7Eh.png)
 
-## 修改封包
+# 修改封包
 介紹的時候有提到，Fiddler 就像是郵差一樣，可以修改寄件者與收件者的信件內容。
 
 修改的方式如同 IDE 中斷點一樣，可以決定是要卡住 Request 還是 Response，卡住後可以修改裡面的內容，改完再放行。
@@ -145,12 +145,12 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 
 ![Image](https://i.imgur.com/KWl5dbR.png)
 
-#### 補充
+## 補充
 如果想要把所有卡住的請求都直接放行，可以點快速功能中的「Go」
 
 ![Image](https://i.imgur.com/2HtjTOX.png)
 
-### 範例情境
+## 範例情境
 呼應一下**前言**提到的情境，都是下中斷點可以解決的。
 
 **卡 Request**
@@ -162,7 +162,7 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 - 在 Local 調整完檔案（HTML、CSS、JS、Image...etc），想上到**正式環境**測試一下效果，但又不想真的改到正式環境的檔案?
 - 修改 Response 回傳的資料（EX: 修改**後端 API** 回傳的使用者權限、查詢結果、新增成功與否...etc，導致前端畫面上的變化）。
 
-### 中斷點設定方式
+## 中斷點設定方式
 中斷點有以下幾種設定方式：
 1. Global 層級下中斷點
 2. 設定 AutoResponder
@@ -247,7 +247,7 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 
 ![Image](https://i.imgur.com/jCD6gvu.png)
 
-## Fiddler 抓不到特定應用程式的封包?
+# Fiddler 抓不到特定應用程式的封包?
 到此為止，已經講述了如何配置 Fiddler 抓取 HTTP(s) 流量，並且搭配 Filters 與中斷點，讓開發更加方便。
 
 預設抓取 ``All Processes`` 下，除了 Browser 以外，有些桌面應用程式的流量也有出現在 Fiddler，但有些卻沒有，這是怎麼回事呢?
@@ -265,7 +265,7 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 ![Image](https://i.imgur.com/2IHwCj5.png)
 2. 沒有的話只能透過 Proxifier 之類的工具強制代理
 
-### 實際演練
+## 實際演練
 我有購買一個影片，但影片被加密過，要用對方提供的特殊播放器，並且輸入正確的帳號密碼才能夠觀看。
 
 ![Image](https://i.imgur.com/gmomyBd.png)
@@ -314,7 +314,7 @@ PS.
 
 再來可以修改 hosts 讓播放器的網址隨便解析到一個 ip，反正只要連得上，都可以讓他的 Response 變成我們預先設定好的 JSON，如此一來，對方的 Server 不管有沒有啟用，對我們而言都不重要了。
 
-## 一些「特殊」的用途
+# 一些「特殊」的用途
 寫程式常常聽到一句話：「永遠不要相信使用者輸入的內容」，藉由這篇文章，應該更有體會了吧。
 
 台灣某付費影視網站，曾經發生過只有前端 + API（丟影片 ID 去查） 驗證使用者有沒有權限觀看影片，影片 CDN 資源卻沒有再次驗證，導致修改掉 Request 送出去的影片 ID，就能夠訪問那些使用者無權觀看的影片。
@@ -341,7 +341,7 @@ PS.
 IOS 的話我自己是在用 ``Thor``，Android 的話不熟，還請有使用過的人補充。
 
 
-## 結語
+# 結語
 本文提供了一個 Web Debugging Proxy and Troubleshooting Solutions，日後開發遇到困難時，不妨也可以思考看看類似的工具能否幫助你更快排除障礙。
 
 至於文末提到的那些情境，絕對不是倡導破解與非法存取，而是讓開發者們時刻警惕自己負責的專案有沒有類似問題，若不幸有人閱讀本文後去做出違反法律的事情，也與筆者無關，純屬讀者個人行為。
