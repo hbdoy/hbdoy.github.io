@@ -25,12 +25,15 @@ comments:
 
 如果有任一個需求符合，用 Fiddler 就對了!
 
+> PS. 以下文長慎入，可以選擇自己需要的內容閱讀就好。
+
 ### 本文內容：
 1. 什麼是 Fiddler，和 Postman、Wireshark 的差異?
 2. 實際抓包操作 & 過濾不需要的內容
 3. 設定 AutoResponder 自訂（修改）回傳內容
 4. 中斷每個 Request 或 Response 的方法
-5. 介紹一些「特殊」的用途（未經許可下，不要試圖做出侵害他人權利之行為）
+5. 實戰演練，Fiddler 抓不到特定應用程式的封包？
+6. 介紹一些「特殊」的用途（未經許可下，不要做出侵害他人權利之行為）
 
 ## 什麼是 Fiddler
 老樣子，我們先看[維基百科](https://zh.wikipedia.org/wiki/Fiddler)的定義
@@ -245,3 +248,71 @@ Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fidd
 其他支援的指令如下
 
 ![Image](https://i.imgur.com/jCD6gvu.png)
+
+## Fiddler 抓不到特定應用程式的封包?
+到此為止，已經講述了如何配置 Fiddler 抓取 HTTP(s) 流量，並且搭配 Filters 與中斷點，讓開發更加方便。
+
+預設抓取 ``All Processes`` 下，除了 Browser 以外，有些桌面應用程式的流量也有出現在 Fiddler，但有些卻沒有，這是怎麼回事呢?
+
+![Image](https://i.imgur.com/XJbEZbb.png)
+
+![Image](https://i.imgur.com/BAzIWMC.png)
+
+這是因為除了 Browser 以外，其他能夠抓到的情況是
+1. 程式使用 WinInet 函式庫發送 HTTP/HTTPS
+2. 程式內嵌 WebBrowser
+
+那如果你還是想要抓某個應用程式，只有兩個辦法
+1. 看一下該應用程式有沒有提供代理伺服器設定
+![Image](https://i.imgur.com/2IHwCj5.png)
+2. 沒有的話只能透過 Proxifier 之類的工具強制代理
+
+### 實際演練
+我有購買一個影片，但影片被加密過，要用對方提供的特殊撥放器，並且輸入正確的帳號密碼才能夠觀看。
+
+![Image](https://i.imgur.com/gmomyBd.png)
+
+![Image](https://i.imgur.com/QQOn1Q7.png)
+
+但我遇到一個問題，影片是在本地端，並非線上串流，理論上我應該可以離線（斷網）觀看，但實際把網路關掉後，輸入正確的帳號密碼，卻無法撥放...，然後打開網路又可以正常撥放了，實在很不方便阿。
+
+至此猜測
+1. 輸入的帳號密碼不會在軟體 Local 端計算解密 Key。
+2. 或者是 Key 是在本地端計算，但可能有其他功能，像是確認軟體版本號之類的，如果無法連上網，就沒辦法撥放。
+
+有了猜想後，來抓包觀察一下，不出所料，什麼都抓不到，而且撥放軟體並沒有提供代理設置的功能。
+
+![Image](https://i.imgur.com/gI6WNFf.png)
+
+那就只能用上面提到的 Proxifier 來強制幫他代理吧！
+
+PS.
+1. 礙於文章篇幅，不會再介紹 Proxifier 使用方式。
+2. Proxifier 是要付費的，如果你不想付費，可以尋找其他同類型的工具。
+
+開啟 Proxifier 設定好規則
+
+![Image](https://i.imgur.com/kGFQD2B.png)
+
+選擇要代理的應用程式
+
+![Image](https://i.imgur.com/34SMiCa.png)
+
+接著在重新撥放一次影片，可以看到 Fiddler 成功抓到撥放器的封包
+
+![Image](https://i.imgur.com/91vlvhY.png)
+
+在 Response 的 JSON 裡，看到了 ``play_key``，卡了一下中斷點，把其他資料都亂修改，只留下 ``play_key`` 還是可以正常撥放，因此確定了上面的假設：「軟體是每次撥放的時候都拿帳號密碼去戳 Server 取回解密影片的 Key」，但有趣的是，戳了好幾次 Server，每次拿回來的 Key 都一樣XD
+
+![Image](https://i.imgur.com/ZzQ8dIK.png)
+
+拿到 Key（只對我這部影片有效）之後，就來設定 AutoResponder 規則吧
+
+![Image](https://i.imgur.com/ry0xZCB.png)
+
+可以直接複製剛剛正常的 Response 貼進來就好
+
+![Image](https://i.imgur.com/Y2rWxu3.png)
+
+至此，撥放器送出去的 Request 不會再到 Server 端，而是直接回傳我們定義好的包含 Key 的 JSON。
+
