@@ -11,10 +11,9 @@ updated:
 keywords:
 description:
 comments:
-top_img: https://i.imgur.com/K3Qkmsn.png
-cover: https://i.imgur.com/K3Qkmsn.png
+top_img: https://i.imgur.com/77MuXJH.jpg
+cover: https://i.imgur.com/77MuXJH.jpg
 ---
-
 # 前言
 當你需要一個安全的機制來保護你的資料時，不妨可以使用 Net Core 的資料保護（Data Protection）。
 

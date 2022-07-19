@@ -7,8 +7,8 @@ tags:
 - cshtml
 - encoding
 updated:
-top_img: https://i.imgur.com/3Ee1ihI.png
-cover: https://i.imgur.com/3Ee1ihI.png
+top_img: https://i.imgur.com/OXRInZY.jpg
+cover: https://i.imgur.com/OXRInZY.jpg
 keywords:
 description:
 comments:

@@ -13,8 +13,8 @@ updated:
 keywords:
 description:
 comments:
-top_img: https://i.imgur.com/wnrYIHy.png
-cover: https://i.imgur.com/wnrYIHy.png
+top_img: https://i.imgur.com/mjW6nib.jpg
+cover: https://i.imgur.com/mjW6nib.jpg
 ---
 
 # 前言

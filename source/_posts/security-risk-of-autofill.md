@@ -7,8 +7,8 @@ tags:
 - browser
 - autofill
 updated:
-top_img: https://i.imgur.com/uQ3yfCx.png
-cover: https://i.imgur.com/uQ3yfCx.png
+top_img: https://i.imgur.com/hCMbYtW.jpg
+cover: https://i.imgur.com/hCMbYtW.jpg
 keywords:
 description:
 comments:
