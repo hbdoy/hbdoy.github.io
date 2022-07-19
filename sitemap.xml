@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ryanlee.tw/2022/07/19/negotiation/</loc>
+    
+    <lastmod>2022-07-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/about/index.html</loc>
+    
+    <lastmod>2022-07-18</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ryanlee.tw/2021/08/23/fiddler/</loc>
     
     <lastmod>2021-08-23</lastmod>
@@ -71,17 +85,10 @@
     
   </url>
   
-  <url>
-    <loc>https://ryanlee.tw/about/index.html</loc>
-    
-    <lastmod>2020-11-29</lastmod>
-    
-  </url>
-  
 
   <url>
     <loc>https://ryanlee.tw/</loc>
-    <lastmod>2021-12-07</lastmod>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -89,119 +96,119 @@
   
   <url>
     <loc>https://ryanlee.tw/tags/cshtml/</loc>
-    <lastmod>2021-12-07</lastmod>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ryanlee.tw/tags/encoding/</loc>
-    <lastmod>2021-12-07</lastmod>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ryanlee.tw/tags/Model-Binding/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/Data-Protection/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/Cookie/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/SSO/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/Hexo/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/Butterfly/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/Facebook-Comment/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/TickTick/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/ToDoList/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/Kanban/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/Calendar/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/browser/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/tags/autofill/</loc>
-    <lastmod>2021-12-07</lastmod>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ryanlee.tw/tags/Http-Proxy/</loc>
-    <lastmod>2021-12-07</lastmod>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ryanlee.tw/tags/Fiddler/</loc>
-    <lastmod>2021-12-07</lastmod>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/Data-Protection/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/Cookie/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/SSO/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/Hexo/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/Butterfly/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/Facebook-Comment/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/TickTick/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/ToDoList/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/Kanban/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/Calendar/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/browser/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/tags/autofill/</loc>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -210,49 +217,56 @@
   
   <url>
     <loc>https://ryanlee.tw/categories/Net-Core/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/categories/Blog/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/categories/ToDoList/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/categories/Security/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/categories/Blog/Hexo/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ryanlee.tw/categories/ToDoList/TickTick/</loc>
-    <lastmod>2021-12-07</lastmod>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ryanlee.tw/categories/DevTools/</loc>
-    <lastmod>2021-12-07</lastmod>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/categories/Blog/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/categories/Relationship/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/categories/ToDoList/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/categories/Security/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/categories/Blog/Hexo/</loc>
+    <lastmod>2022-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ryanlee.tw/categories/ToDoList/TickTick/</loc>
+    <lastmod>2022-07-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
