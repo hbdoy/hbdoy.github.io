@@ -2,7 +2,7 @@
 title: Net Core Razor View 中文被自動編碼!?
 date: 2021-04-05 20:43:56
 categories:
-- Net Core
+- ASP.NET Core
 tags:
 - cshtml
 - encoding

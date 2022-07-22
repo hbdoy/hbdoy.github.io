@@ -2,7 +2,7 @@
 title: Net Core 多站台共用驗證 Cookie
 date: 2021-03-10 20:40:57
 categories:
-- Net Core
+- ASP.NET Core
 tags:
 - Data Protection
 - Cookie

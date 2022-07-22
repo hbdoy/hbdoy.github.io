@@ -2,7 +2,7 @@
 title: ASP.NET Core Model Binding 死活綁不上 - 1
 date: 2021-05-12 23:21:08
 categories:
-- Net Core
+- ASP.NET Core
 tags:
 - Model Binding
 updated:
