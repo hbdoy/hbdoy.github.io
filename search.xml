@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>ASP.NET 專案設定多個目標框架</title>
+      <link href="2022/07/22/targetframeworks-setting/"/>
+      <url>2022/07/22/targetframeworks-setting/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>遇到一個需求是要建立兩個不同版本的 Web API 進行測試，他們會參考到某個類別庫 A。</p><p>但為了嚴謹性，希望 NET 6 參考到的類別庫也是使用 NET 6，而不是較低的版本如 NET 3.1 或 NET Standard；反之 NET 3.1 的 Web API 也是希望使用框架目標為 NET 3.1 的類別庫 A。</p><h1 id="本文開始"><a href="#本文開始" class="headerlink" title="本文開始"></a>本文開始</h1><p>簡單紀錄一下調整的過程。</p><h2 id="調整-csproj"><a href="#調整-csproj" class="headerlink" title="調整 csproj"></a>調整 csproj</h2><p>打開類別庫 A 的 csproj</p><blockquote><p>Tips: 在 VS 中可以直接在方案總管中對專案點兩下打開 csproj 設定檔。</p></blockquote><p>將 TargetFramework 加上「s」，然後就可以在「;」後面加上想要支援的版本。</p><blockquote><p>引用該類別庫的專案，會自動選擇能夠兼容的最高版本。</p><p>例如: NET 6 API 專案引用類別庫時，雖然可以用 NET 3.1 也可以用 NET 6，但會自動選擇 NET 6。</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;PropertyGroup&gt;</span><br><span class="line">    &lt;TargetFrameworks&gt;netcoreapp3.1;net6.0&lt;&#x2F;TargetFrameworks&gt;</span><br><span class="line">&lt;&#x2F;PropertyGroup&gt;</span><br></pre></td></tr></table></figure><p>具體可用的版本號可參考 <a href="https://docs.microsoft.com/en-us/dotnet/standard/frameworks#supported-target-frameworks">supported-target-frameworks</a></p><p>調整後 build 出的兩個版本</p><p><img src="https://i.imgur.com/XutLuQk.png" alt="Image"></p><h3 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h3><p>如果不同的 .NET 版本想引用不同的套件，或者是某些套件只能在特定的 .NET 版本上運行時，也可以在 csporj 裡面設定 PackageReference。</p><p>例如:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;ItemGroup Condition&#x3D;&quot;&#39;$(TargetFramework)&#39; &#x3D;&#x3D; &#39;net6.0&#39;&quot;&gt;</span><br><span class="line">    &lt;PackageReference Include&#x3D;&quot;Data.Common.Context&quot; Version&#x3D;&quot;6.0.0&quot; &#x2F;&gt;</span><br><span class="line">    &lt;PackageReference Include&#x3D;&quot;Data.Common.Values&quot; Version&#x3D;&quot;6.0.0&quot; &#x2F;&gt;</span><br><span class="line">    &lt;PackageReference Include&#x3D;&quot;Data.AccessLog.EFCore&quot; Version&#x3D;&quot;6.0.0&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;ItemGroup&gt;</span><br><span class="line"></span><br><span class="line">&lt;ItemGroup Condition&#x3D;&quot;&#39;$(TargetFramework)&#39; &#x3D;&#x3D; &#39;netcoreapp3.1&#39;&quot;&gt;</span><br><span class="line">    &lt;PackageReference Include&#x3D;&quot;Data.Common.Context&quot; Version&#x3D;&quot;1.5.0&quot; &#x2F;&gt;</span><br><span class="line">    &lt;PackageReference Include&#x3D;&quot;Data.Common.Values&quot; Version&#x3D;&quot;1.6.0&quot; &#x2F;&gt;</span><br><span class="line">    &lt;PackageReference Include&#x3D;&quot;Data.AccessLog.EFCore&quot; Version&#x3D;&quot;1.7.0&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;ItemGroup&gt;</span><br></pre></td></tr></table></figure><h2 id="Conditional-compilation"><a href="#Conditional-compilation" class="headerlink" title="Conditional compilation"></a>Conditional compilation</h2><p>如果某些 Code 只想在某個版本上的 NET 上跑，可以使用預處理器指示詞來控制<a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives#conditional-compilation">條件式編譯</a>。</p><p>例如:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public string Platform &#123;</span><br><span class="line">   get &#123;</span><br><span class="line">#if NET6_0</span><br><span class="line">      return &quot;.NET 6&quot;</span><br><span class="line">#elif NETCOREAPP3_1</span><br><span class="line">      return &quot;.NET 3&quot;</span><br><span class="line">#else</span><br><span class="line">#error This code block does not match csproj TargetFrameworks list</span><br><span class="line">#endif</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>更多前置處理器符號可參考 <a href="https://docs.microsoft.com/en-us/dotnet/core/tutorials/libraries#preprocessor-symbols">Preprocessor Symbols</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> ASP.NET Core </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> targetframeworks </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>關於談判二三事</title>
       <link href="2022/07/19/negotiation/"/>
       <url>2022/07/19/negotiation/</url>
@@ -86,7 +111,7 @@
       
       <categories>
           
-          <category> Net Core </category>
+          <category> ASP.NET Core </category>
           
       </categories>
       
@@ -111,7 +136,7 @@
       
       <categories>
           
-          <category> Net Core </category>
+          <category> ASP.NET Core </category>
           
       </categories>
       
@@ -138,7 +163,7 @@
       
       <categories>
           
-          <category> Net Core </category>
+          <category> ASP.NET Core </category>
           
       </categories>
       
