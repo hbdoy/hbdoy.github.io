@@ -123,6 +123,10 @@ offline:
       handler: cacheFirst
       options:
         origin: cdn.jsdelivr.net
+    - urlPattern: /*
+      handler: cacheFirst
+      options:
+        origin: i.imgur.com
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
