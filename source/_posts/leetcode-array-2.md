@@ -17,7 +17,7 @@ comments:
 - 977: Squares of a Sorted Array
 - 209: Minimum Size Subarray Sum
 
-## 977. Squares of a Sorted Array
+# 977. Squares of a Sorted Array
 https://leetcode.com/problems/squares-of-a-sorted-array
 
 ```
@@ -108,7 +108,7 @@ public int[] SortedSquares(int[] nums)
 }
 ```
 
-## 209. Minimum Size Subarray Sum
+# 209. Minimum Size Subarray Sum
 https://leetcode.com/problems/minimum-size-subarray-sum/
 
 ```

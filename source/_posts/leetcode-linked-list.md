@@ -14,6 +14,11 @@ keywords:
 description:
 comments:
 ---
+# 題目
+- 203: Remove Linked List Elements
+- 707: Design Linked List
+- 206: Reverse Linked List
+
 # 知識點
 1. linkedlist 每一個節點包含兩個部分，一個屬性存放資料，一個指針負責指向下一個節點位置(若無則 null)。
 
@@ -60,11 +65,7 @@ LinkedList: O(n)
 Array: O(n)
 LinkedList: O(1)
 
-
-# 題目
-- 203: Remove Linked List Elements
-
-## 203. Remove Linked List Elements
+# 203. Remove Linked List Elements
 https://leetcode.com/problems/remove-linked-list-elements/
 
 ```
@@ -176,7 +177,7 @@ var input = GenerateListNodes(new List<int> { 1, 2, 6, 3, 4, 5, 6 });
 var result = RemoveElements(input, 6);
 ```
 
-## 707. Design Linked List
+# 707. Design Linked List
 https://leetcode.com/problems/design-linked-list/
 
 ```
@@ -350,7 +351,7 @@ t.DeleteAtIndex(0);
 t.PrintList(); // 2, 3
 ```
 
-## 206. Reverse Linked List
+# 206. Reverse Linked List
 https://leetcode.com/problems/reverse-linked-list/
 
 ```

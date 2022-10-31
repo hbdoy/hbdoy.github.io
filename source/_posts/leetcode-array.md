@@ -30,7 +30,7 @@ comments:
 - 704: Binary Search
 - 27: Remove Element
 
-## 704. Binary Search
+# 704. Binary Search
 https://leetcode.com/problems/binary-search
 
 ```
@@ -142,7 +142,7 @@ public int Search(int[] nums, int target)
 }
 ```
 
-## 27: Remove Element
+# 27: Remove Element
 https://leetcode.com/problems/remove-element/
 
 ```
