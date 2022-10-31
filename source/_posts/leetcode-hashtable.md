@@ -7,6 +7,7 @@ tags:
 - valid-anagram
 - find-common-characters
 - intersection-of-two-arrays
+- happy-number
 updated:
 top_img: https://i.imgur.com/kCZGwrU.png
 cover: https://i.imgur.com/kCZGwrU.png
@@ -19,6 +20,7 @@ comments:
 - 242: Valid Anagram
 - 1002: Find Common Characters
 - 349: Intersection of Two Arrays
+- 202: Happy Number
 
 # 知識點
 通常 HashTable 用來快速判斷一個元素是否在集合中。
@@ -242,5 +244,74 @@ public int[] Intersection(int[] nums1, int[] nums2)
     }
 
     return uniqueResult.ToArray();
+}
+```
+
+# 202. Happy Number
+https://leetcode.com/problems/happy-number/
+
+```
+Write an algorithm to determine if a number n is happy.
+
+A happy number is a number defined by the following process:
+
+Starting with any positive integer, replace the number by the sum of the squares of its digits.
+Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
+Those numbers for which this process ends in 1 are happy.
+Return true if n is a happy number, and false if not.
+```
+
+Example 1:
+```
+Input: n = 19
+Output: true
+
+Explanation:
+12 + 92 = 82
+82 + 22 = 68
+62 + 82 = 100
+12 + 02 + 02 = 1
+```
+
+Example 2:
+```
+Input: n = 2
+Output: false
+```
+
+Constraints:
+```
+1 <= n <= 231 - 1
+```
+
+## 思路
+題目說可能無法算出 ``1`` 進而無限循環，乍看之下很麻煩，但其實可以理解為: ``進入無限循環意味著每一輪的計算結果曾經出現``。
+
+如果要判過一個元素是否存在，那就進入 HashTable 的守備範圍了。
+
+## 解法
+```csharp
+public bool IsHappy(int n)
+{
+    int tmp = n;
+    HashSet<int> record = new HashSet<int>();
+    while (tmp != 1 && !record.Contains(tmp))
+    {
+        record.Add(tmp);
+        tmp = CalHappyNumber(tmp);
+    }
+    return tmp == 1;
+}
+
+private int CalHappyNumber(int m)
+{
+    int res = 0;
+    while (m > 0)
+    {
+        int tmp = m % 10;
+        res += (int)Math.Pow(tmp, 2);
+        m /= 10;
+    }
+    return res;
 }
 ```
