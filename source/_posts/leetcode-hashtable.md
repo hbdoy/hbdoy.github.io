@@ -8,6 +8,7 @@ tags:
 - find-common-characters
 - intersection-of-two-arrays
 - happy-number
+- two-sum
 updated:
 top_img: https://i.imgur.com/kCZGwrU.png
 cover: https://i.imgur.com/kCZGwrU.png
@@ -21,9 +22,15 @@ comments:
 - 1002: Find Common Characters
 - 349: Intersection of Two Arrays
 - 202: Happy Number
+- 1: Two Sum
 
 # 知識點
 通常 HashTable 用來快速判斷一個元素是否在集合中。
+
+常見的結構為:
+- Array
+- Set: 可以粗暴理解為重複 value 的 Array。
+- Map: key value pair 的集合，key 不能重複。
 
 # 242. Valid Anagram
 https://leetcode.com/problems/valid-anagram/
@@ -312,6 +319,103 @@ private int CalHappyNumber(int m)
         res += (int)Math.Pow(tmp, 2);
         m /= 10;
     }
+    return res;
+}
+```
+
+# 1. Two Sum
+https://leetcode.com/problems/two-sum/
+
+```
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+```
+
+Example 1:
+```
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+```
+
+Example 2:
+```
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+```
+
+Example 3:
+```
+Input: nums = [3,3], target = 6
+Output: [0,1]
+```
+
+Constraints:
+```
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+```
+
+## 思路
+LeetCode 第一題，夢想<del>痛苦</del>開始的地方。
+
+可以用兩層 for 暴力解，但也可以透過 HashTable 來解，時間複雜度為 ``O(n)``。
+
+這題解題思路為: ``每次迭代時，都嘗試去找 Array 中是否存在與其相加為 target 的值``。
+
+EX:
+```
+Input: [1, 2, 3]，Target = 4
+```
+
+那就是
+第一輪 ``1`` 的時候，嘗試找出 ``4 - 1 = 3``
+第二輪 ``2`` 的時候，嘗試找出 ``4 - 2 = 2``
+第三輪 ``3`` 的時候，嘗試找出 ``4 - 3 = 1``
+
+要確認某個元素是否在集合中，又進入 HashTable 的守備範圍了，只是這次需要 return index，所以要用 map (C# 為 ``HashTable``) 來同時存 key & value。
+
+## 解法
+此題把 HashTable 的 ``key`` 用來存 Array 的值，``value`` 用來存 index。
+
+```csharp
+public int[] TwoSum(int[] nums, int target)
+{
+    int[] res = new int[2];
+    if (!nums.Any())
+    {
+        return res;
+    }
+
+    Hashtable map = new Hashtable();
+    for (int i = 0; i < nums.Count(); i++)
+    {
+        // 嘗試在 map 中找出與當前迭代值相加為 target 的 key
+        int tmp = target - nums[i];
+
+        // 找到
+        if (map.ContainsKey(tmp))
+        {
+            // 取出 map 中的 value 也就是 array 的 index
+            res[0] = (int)map[tmp];
+            res[1] = i;
+            break;
+        }
+
+        // 如果有重複的 key 會噴錯
+        if (!map.ContainsKey(nums[i]))
+        {
+            // map 中沒有找到，把當前迭代的值存入 map
+            map.Add(nums[i], i);
+        }
+    }
+    
     return res;
 }
 ```
