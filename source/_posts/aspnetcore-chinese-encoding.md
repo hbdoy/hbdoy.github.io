@@ -7,8 +7,8 @@ tags:
 - cshtml
 - encoding
 updated:
-top_img: https://i.imgur.com/OXRInZY.jpg
-cover: https://i.imgur.com/OXRInZY.jpg
+top_img: /image/OXRInZY.jpg
+cover: /image/OXRInZY.jpg
 keywords:
 description:
 comments:
@@ -21,11 +21,11 @@ comments:
 
 在 ASP.NET 3.5（MVC 2） 以前，WebForm View Engine 若想要編碼 HTML 中的內容以避免 XSS 問題，需要自己呼叫編碼的方法，但是每個內容都要呼叫實在很麻煩，而且開發者也常常會忘記。
 
-![Image](https://i.imgur.com/RgIcvAq.png)
+![Image](/image/RgIcvAq.png)
 
 所幸 2011 年，ASP.NET 4（MVC 3）發佈以後，新增 ``<%: %>`` 語法來自動對內容進行 HTML 編碼，減輕了開發者的負擔與降低系統安全風險。
 
-![Image](https://i.imgur.com/EwN1ni6.png)
+![Image](/image/EwN1ni6.png)
 
 ASP.NET 4（MVC 3）版本中，也 Release 了 Razor View Engine，因為容易學習、寫法更為簡潔方便的特性，使得它逐漸成為開發 ASP.NET MVC 網站的主流（兩者具體比較可以[參考](https://www.c-sharpcorner.com/UploadFile/ff2f08/aspx-view-engine-vs-razor-view-engine/)）。
 
@@ -39,27 +39,27 @@ ASP.NET 4（MVC 3）版本中，也 Release 了 Razor View Engine，因為容易
 
 EX: ``< > ' "``
 
-![Image](https://i.imgur.com/OXm9IqG.png)
+![Image](/image/OXm9IqG.png)
 
 以下可以看到測試的結果，特定的字元都被進行轉碼。
 
-![Image](https://i.imgur.com/MmhP191.png)
+![Image](/image/MmhP191.png)
 
 ## Net Core
 以上都沒什麼問題，但相同的測試到了 Net Core，好像有些事情不太對勁喔
 
-![Image](https://i.imgur.com/M4miOHk.png)
+![Image](/image/M4miOHk.png)
 
 輸出的結果
 
-![Image](https://i.imgur.com/KULvD7j.png)
+![Image](/image/KULvD7j.png)
 
 可以發現到，除了特定的字元以外，連中文都被編碼了，僅剩  abc123 正常顯示。
 
 ## 解決方法
 翻了一下[官方文件](https://docs.microsoft.com/en-us/aspnet/core/security/cross-site-scripting#customizing-the-encoders)真相大白
 
-![Image](https://i.imgur.com/qQH76xd.png)
+![Image](/image/qQH76xd.png)
 
 原來 ASP.NET Core 的 Razor TagHelper 及 HtmlHelper 預設會將所有非拉丁字元都當成特殊符號進行編碼，理由是為了防範未知或未來瀏覽器針對這些字元渲染時發生的錯誤...
 

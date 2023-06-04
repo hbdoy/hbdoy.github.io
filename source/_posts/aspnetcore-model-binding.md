@@ -6,8 +6,8 @@ categories:
 tags:
 - Model Binding
 updated:
-top_img: https://i.imgur.com/4mGvj6p.png
-cover: https://i.imgur.com/4mGvj6p.png
+top_img: /image/4mGvj6p.png
+cover: /image/4mGvj6p.png
 keywords:
 description:
 comments:
@@ -26,14 +26,14 @@ ASP.NET Core 的 Model Binding 基本上和 ASP.NET Framework 差不多，但實
 2. Route
 3. Query
 
-![Image](https://i.imgur.com/CRzLCcT.png)
+![Image](/image/CRzLCcT.png)
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/3vEzlK2.png">
+<img style="max-width: 350px; width: 100%" src="/image/3vEzlK2.png">
 
 可以三個都傳入，但是有其優先序
 Form > Route > Query
 
-![Image](https://i.imgur.com/jtdbZzi.png)
+![Image](/image/jtdbZzi.png)
 
 可以看到結果：
 
@@ -66,13 +66,13 @@ Form > Route > Query
 1. 直接在 Action 的參數前面指定
 2. 複雜型別可以到 Model 中的成員加上
 
-![Image](https://i.imgur.com/80gy0XZ.png)
+![Image](/image/80gy0XZ.png)
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/WIS0mNw.png">
+<img style="max-width: 350px; width: 100%" src="/image/WIS0mNw.png">
 
 以上面的例子來說，在 MyId2 指定了 ``[FromQuery]``，那就算在優先序高的 Form 中傳入 ``MyId2 = 2``，也不會被影響到，而是吃 Query 傳入的 ``MyId2 = 4``。
 
-![Image](https://i.imgur.com/c5MHWtF.png)
+![Image](/image/c5MHWtF.png)
 
 Q: 但如果 Query 沒有傳入 MyId2，而是只有 Form 傳入呢?
 
@@ -80,7 +80,7 @@ A: 如果在沒有指定 Attribute 的情況下，會吃到 Form 傳入的，但
 
 下圖可以看到 MyId2 沒吃到，所以回傳 int 預設的 0。
 
-![Image](https://i.imgur.com/3mcptNJ.png)
+![Image](/image/3mcptNJ.png)
 
 # 本文開始
 實際開發時，最頭痛的資料來源就屬 Json 了。
@@ -108,7 +108,7 @@ public IActionResult GetSomething(A a, B b)
 
 但如果是 ASP.NET Core，要接收 Json 需要指定 ``[FromBody]``，否則收不進來
 
-![Image](https://i.imgur.com/xfqZH3L.png)
+![Image](/image/xfqZH3L.png)
 
 ```csharp
 public IActionResult GetSomething([FromBody] A a)
@@ -120,7 +120,7 @@ public IActionResult GetSomething([FromBody] A a)
 public IActionResult GetSomething([FromBody] A a, [FromBody] B b)
 ```
 
-![Image](https://i.imgur.com/Hpnzwvq.png)
+![Image](/image/Hpnzwvq.png)
 
 ### 簡單型別
 簡單型別透過 JSON 也只能帶一個上來
@@ -142,7 +142,7 @@ $.ajax({
 })
 ```
 
-![Image](https://i.imgur.com/4mGvj6p.png)
+![Image](/image/4mGvj6p.png)
 
 你以為這樣就綁得上去了嗎?
 
@@ -158,7 +158,7 @@ $.ajax({
 
 因為不符合直接傳 string，所以名字一樣也收不了
 
-![Image](https://i.imgur.com/OcVu3gP.png)
+![Image](/image/OcVu3gP.png)
 
 
 要直接傳一個 string 才收的到
@@ -171,7 +171,7 @@ $.ajax({
 })
 ```
 
-![Image](https://i.imgur.com/xmsrSJG.png)
+![Image](/image/xmsrSJG.png)
 
 夠難受吧，如果是多個簡單型別，別用 Json 了，直接發 Form 上來。
 
@@ -268,7 +268,7 @@ data: {
 
 如果直接傳兩個 Name 上去，結果會將第一個抓到的 Name 綁到 A 和 B 的 Name 上。
 
-![Image](https://i.imgur.com/VawRThK.png)
+![Image](/image/VawRThK.png)
 
 Q: Form 表單的資料格式看起來都是 key = value，該怎麼帶多個同名 key 呢?
 
@@ -285,7 +285,7 @@ $.ajax({
 })
 ```
 
-![Image](https://i.imgur.com/Wk4FQMS.png)
+![Image](/image/Wk4FQMS.png)
 
 ### 多個複雜型別
 甚至資料是這樣子呢?
@@ -371,11 +371,11 @@ $.ajax({
 
 送上去的 Form Data 也會是上面範例中的型式
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/Du5DHSY.png">
+<img style="max-width: 350px; width: 100%" src="/image/Du5DHSY.png">
 
 後端也能正確解析
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/Fxcz1hP.png">
+<img style="max-width: 350px; width: 100%" src="/image/Fxcz1hP.png">
 
 補充：如果在送出前就想要拿到這種格式，可以呼叫 ``param`` 函數，效果是一樣的。
 

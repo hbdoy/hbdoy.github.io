@@ -13,8 +13,8 @@ updated:
 keywords:
 description:
 comments:
-top_img: https://i.imgur.com/mjW6nib.jpg
-cover: https://i.imgur.com/mjW6nib.jpg
+top_img: /image/mjW6nib.jpg
+cover: /image/mjW6nib.jpg
 ---
 
 # 前言
@@ -55,49 +55,49 @@ cover: https://i.imgur.com/mjW6nib.jpg
 ## 分組
 能夠建立好幾個清單來分開 **個人** 與 **工作** 的待辦事項
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/e00YuXh.jpg">
+<img style="max-width: 350px; width: 100%" src="/image/e00YuXh.jpg">
 
 ## 待辦清單
 待辦清單除了標題以外，也可以在補充一些內容，或是子任務
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/3ozLMgr.jpg">
+<img style="max-width: 350px; width: 100%" src="/image/3ozLMgr.jpg">
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/sTqqAME.jpg">
+<img style="max-width: 350px; width: 100%" src="/image/sTqqAME.jpg">
 
 ## Notes
 這個有點像心得總結，你可以新增一個非待辦事項的筆記，用來總結一週心得或是任何你想記錄的
 
 第一張圖片裡面，我就為每個分組都新增了一個 Notes 清單
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/D3Is1fC.jpg">
+<img style="max-width: 350px; width: 100%" src="/image/D3Is1fC.jpg">
 
 ## Kanban
 除了條列式的呈現待辦事項以外，也可以切換其他看板模式，達到 Kanban 管理**有狀態**的任務效果。
 
 我是把 Work 的 List 改成看板而已，因為 Work 的事項有時候比較沒有辦法短時間就完成，但還是要紀錄已經開始處理。
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/MytQ6LZ.jpg">
+<img style="max-width: 350px; width: 100%" src="/image/MytQ6LZ.jpg">
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/HHgTNpc.jpg">
+<img style="max-width: 350px; width: 100%" src="/image/HHgTNpc.jpg">
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/7lbRVWX.jpg">
+<img style="max-width: 350px; width: 100%" src="/image/7lbRVWX.jpg">
 
 ## Calendar
 免費版只能使用**週行事曆**而以，需要更詳細的功能可以付費支持。
 
 行事曆可以一目瞭然的顯示「幾月幾號有什麼事情要做」
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/P0LauKM.jpg">
+<img style="max-width: 350px; width: 100%" src="/image/P0LauKM.jpg">
 
 ### 同步其他行事曆
 若有其他行事曆，Ex: iPhone / Google 行事曆，也可以把上面的任務同步進 TickTick
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/YEh5zkQ.jpg">
+<img style="max-width: 350px; width: 100%" src="/image/YEh5zkQ.jpg">
 
 ## Smart List
 上面範例使用了 Work + Personal + Blog 三個清單，若要知道今天或明天總共有哪些待辦事項，不需要每個清單查看，可以到預設的智慧清單查看就好，Ex: 今天、明天、未來 7 天...etc，會幫你統整所有 List 在當天需要做的事情。
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/XdjaPqr.jpg">
+<img style="max-width: 350px; width: 100%" src="/image/XdjaPqr.jpg">
 
 ## Desktop
 TickTick 支援: Web、Windows、Mac、IOS、Android
@@ -108,13 +108,13 @@ TickTick 支援: Web、Windows、Mac、IOS、Android
 3. 看板拖拉更直覺
 4. 可設定桌面懸浮
 
-![](https://i.imgur.com/VpyDeAb.jpg)
+![](/image/VpyDeAb.jpg)
 
 桌面懸浮可以新增、顯示待辦事項，若不需要使用也會自動縮合在螢幕邊緣，非常實用
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/Gvkitkh.png">
+<img style="max-width: 350px; width: 100%" src="/image/Gvkitkh.png">
 
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/POKIs05.jpg">
+<img style="max-width: 350px; width: 100%" src="/image/POKIs05.jpg">
 
 ## 附註
 其他還有番茄鐘、打卡養成習慣等功能，若有興趣的也可以自行研究。
@@ -142,4 +142,4 @@ TickTick 支援: Web、Windows、Mac、IOS、Android
 
 週任務也能夠新增 List 來解決，每週的檢討也能放在 Notes 裡面，這部分就留給讀者自行研究了。
 
-![](https://i.imgur.com/753PDvM.jpg)
+![](/image/753PDvM.jpg)

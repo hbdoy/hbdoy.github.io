@@ -11,8 +11,8 @@ updated:
 keywords:
 description:
 comments:
-top_img: https://i.imgur.com/77MuXJH.jpg
-cover: https://i.imgur.com/77MuXJH.jpg
+top_img: /image/77MuXJH.jpg
+cover: /image/77MuXJH.jpg
 ---
 # 前言
 當你需要一個安全的機制來保護你的資料時，不妨可以使用 Net Core 的資料保護（Data Protection）。
@@ -83,15 +83,15 @@ Cookie 是可以讀取的，畢竟是同一個網址，退一步來說就算是�
 ### IIS 應用程式集區載入使用者設定檔
 設定為 True 後，會將金鑰保存到上述的資料夾路徑中，也就是圖中的 xml 檔案。
 
-![Image](https://i.imgur.com/GcX1MKD.png)
+![Image](/image/GcX1MKD.png)
 
-![Image](https://i.imgur.com/C7qDfxV.png)
+![Image](/image/C7qDfxV.png)
 
 裡面的內容有：
 1. 建立、啟用、逾期時間（除非特別設定，否則金鑰預設的存活時間是三個月）
 2. 金鑰（在 Windows 平台下會透過 DPAPI 加密）
 
-![Image](https://i.imgur.com/DrhGPLX.png)
+![Image](/image/DrhGPLX.png)
 
 **提醒一下，此金鑰和 MachineKey 一樣重要，千萬不能外洩!**
 
@@ -179,14 +179,14 @@ dotnet ef database update --context MyKeysContext
 
 存到 DB 其實只是把 xml 內容存進去而已，沒有做特別改動
 
-![Image](https://i.imgur.com/twJWzAv.png)
+![Image](/image/twJWzAv.png)
 
 ## DB First 解決方法
 基本上就是這樣，如果有問題的話大概就是第四步，因為我們專案 EF Core 是採 DB First 形式，還是可以解決，只是會有兩種方法：
 1. 可以的話直接 migration 然後 update database，長出 DataProtectionKeys 的 Table 之後，把所有 migration 相關的資料夾、檔案、Table 都刪除。
 2. 如果不能用程式動 Table 的話，可以把 DataProtectionKeys 的 Table 寫成 SQL Script 來給相關人員 Create。
 
-![Image](https://i.imgur.com/48rFEDp.png)
+![Image](/image/48rFEDp.png)
 
 這邊附上 SQL Server + SSMS 直接產生的 Script，使用前請先確認你使用的 DB 語法有沒有正確。
 ```SQL
@@ -221,7 +221,7 @@ GO
 
 若以保存到 File System 為例，XML 打開會看到警示: ``Warning: the key below is in an unencrypted form.``。
 
-![Image](https://i.imgur.com/eMJxVp0.png)
+![Image](/image/eMJxVp0.png)
 
 > 了解更多 [NET Core 的待用金鑰加密](https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/implementation/key-encryption-at-rest)
 

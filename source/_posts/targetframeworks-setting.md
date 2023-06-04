@@ -9,8 +9,8 @@ updated:
 keywords:
 description:
 comments:
-top_img: https://i.imgur.com/J1exQWd.png
-cover: https://i.imgur.com/J1exQWd.png
+top_img: /image/J1exQWd.png
+cover: /image/J1exQWd.png
 ---
 
 # 前言
@@ -42,7 +42,7 @@ cover: https://i.imgur.com/J1exQWd.png
 
 調整後 build 出的兩個版本
 
-![Image](https://i.imgur.com/XutLuQk.png)
+![Image](/image/XutLuQk.png)
 
 ### Condition
 如果不同的 .NET 版本想引用不同的套件，或者是某些套件只能在特定的 .NET 版本上運行時，也可以在 csporj 裡面設定 PackageReference。

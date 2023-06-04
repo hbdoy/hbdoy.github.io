@@ -7,8 +7,8 @@ tags:
 - browser
 - autofill
 updated:
-top_img: https://i.imgur.com/hCMbYtW.jpg
-cover: https://i.imgur.com/hCMbYtW.jpg
+top_img: /image/hCMbYtW.jpg
+cover: /image/hCMbYtW.jpg
 keywords:
 description:
 comments:
@@ -27,26 +27,26 @@ comments:
 # 本文開始
 瀏覽器儲存的資訊看起來很多，但其實就是三個種類，以 Chrome 為例
 
-![Image](https://i.imgur.com/qYskUcE.png)
+![Image](/image/qYskUcE.png)
 
 1. **密碼**: 會綁定網站 Domain，只能夠自動填入相同網址下紀錄的帳密，所以不會發生 A 網站登入，卻填入 B 網站的帳密。
 
-![Image](https://i.imgur.com/TrngHLI.png)
+![Image](/image/TrngHLI.png)
 
 2. **付款方式**: 儲存信用卡資訊(卡號、到期日、持卡人姓名)，要在 https 的網站下才會觸發自動填入。
 
-![Image](https://i.imgur.com/ft7dDbQ.png)
+![Image](/image/ft7dDbQ.png)
 
 3. (本文主要討論)**地址和其他資訊**: 國家、郵遞區號、地址、姓名、電話、Email。
 
-![Image](https://i.imgur.com/i10XPqF.png)
+![Image](/image/i10XPqF.png)
 
 ## autocomplete
 那站在開發者的角度，該如何讓瀏覽器知道 input 可以填入什麼資訊呢?
 
 其實很簡單，就設定 input 的 ``name`` 或 ``autocomplete`` attribute 就好
 
-![Image](https://i.imgur.com/fQ8YXDo.png)
+![Image](/image/fQ8YXDo.png)
 
 常見的 attribute 如下([來源](https://developers.google.com/web/fundamentals/design-and-ux/input/forms)):
 
@@ -74,7 +74,7 @@ comments:
 
 把框線隱藏、長寬設為 0(還是會有一小點)、設定 margin 讓他直接超出螢幕。
 
-![Image](https://i.imgur.com/TuwlhcI.png)
+![Image](/image/TuwlhcI.png)
 
 ## 危害範圍
 Chrome、Edge、Safari 當你自動填入個資時，會順便填入所有能夠對應的個人資訊。
@@ -85,7 +85,7 @@ Chrome、Edge、Safari 當你自動填入個資時，會順便填入所有能夠
 
 以 Chrome 為例，根本不知道實際填入了哪些資訊
 
-![Image](https://i.imgur.com/GNmKUGi.png)
+![Image](/image/GNmKUGi.png)
 
 儘管有些瀏覽器可能會顯示實際填入的資訊，但使用者會認真停下來幾秒鐘檢查的又有多少呢?
 
@@ -96,11 +96,11 @@ Chrome、Edge、Safari 當你自動填入個資時，會順便填入所有能夠
 
 在 Desktop 下，Chrome 的使用率接近 7 成
 
-![Image](https://i.imgur.com/jP6eZ3O.png)
+![Image](/image/jP6eZ3O.png)
 
 在 Mobile 下，Chrome 的使用率也穩居 6 成
 
-![Image](https://i.imgur.com/RSFTsSA.png)
+![Image](/image/RSFTsSA.png)
 
 顯然這個問題影響著很大一部份的使用者。
 

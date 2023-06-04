@@ -10,8 +10,8 @@ tags:
 - happy-number
 - two-sum
 updated:
-top_img: https://i.imgur.com/kCZGwrU.png
-cover: https://i.imgur.com/kCZGwrU.png
+top_img: /image/kCZGwrU.png
+cover: /image/kCZGwrU.png
 keywords:
 description:
 comments:

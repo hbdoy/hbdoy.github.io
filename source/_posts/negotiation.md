@@ -5,8 +5,8 @@ categories:
 - Relationship
 tags:
 updated:
-top_img: https://i.imgur.com/NyD7I10.jpg
-cover: https://i.imgur.com/NyD7I10.jpg
+top_img: /image/NyD7I10.jpg
+cover: /image/NyD7I10.jpg
 keywords:
 description:
 comments:

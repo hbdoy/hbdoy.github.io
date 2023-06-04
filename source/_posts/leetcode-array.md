@@ -7,25 +7,12 @@ tags:
 - binary-search
 - remove-element
 updated:
-top_img: https://i.imgur.com/kCZGwrU.png
-cover: https://i.imgur.com/kCZGwrU.png
+top_img: /image/kCZGwrU.png
+cover: /image/kCZGwrU.png
 keywords:
 description:
 comments:
 ---
-# 前言
-訂了個目標，接下來的兩個月，每天會刷個一、兩題 leetcode，難度由淺入深，保持解題手感，順便複習資料結構與演算法。
-
-然後還會寫一篇筆記，內容大致為
-- 題目
-- 知識點
-- 解法
-- 遇到的問題
-
-但考量到每天可支配的時間不是固定的，若時間緊湊，文章就會是簡單紀錄心得而已，有剩餘時間會再把內容寫詳細一點XD
-
-> 刷題預計會使用 C#。
-
 # 題目
 - 704: Binary Search
 - 27: Remove Element
