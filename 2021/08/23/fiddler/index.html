@@ -5,14 +5,14 @@
 <meta property="og:site_name" content="hbdoy&#39;s blog">
 <meta property="og:description" content="前言你是否曾經有這些困擾呢?  戳 API 想要修改前端 Request 送出去的 JSON，但 JS 被 uglify 很難追、或是開 Postman 但要處理認證、授權、和整包 JSON 很麻煩。 承上，想看的是 UI 與 JS 後續行為，Postman 愛莫能助。 想測試後端驗證，但前端已經有驗證，想測試還要先拔掉前端驗證的 code。 在 Local 調整完檔案（HTML、CSS、JS、I">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/XWC627z.png">
+<meta property="og:image" content="https://ryanlee.tw/image/XWC627z.png">
 <meta property="article:published_time" content="2021-08-23T12:51:22.000Z">
-<meta property="article:modified_time" content="2021-08-23T15:51:34.293Z">
+<meta property="article:modified_time" content="2023-06-04T10:07:58.507Z">
 <meta property="article:author" content="Ryan Lee">
 <meta property="article:tag" content="Http Proxy">
 <meta property="article:tag" content="Fiddler">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/XWC627z.png">
+<meta name="twitter:image" content="https://ryanlee.tw/image/XWC627z.png">
 <meta property="fb:app_id" content="209661937271472"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ryanlee.tw/2021/08/23/fiddler/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/256.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/pwa/16.png"/><link rel="mask-icon" href="/img/pwa/32.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-S9J3B57KGY"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
@@ -85,7 +85,7 @@ var saveToLocal = {
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2021-08-23 23:51:34'
+  postUpdate: '2023-06-04 18:07:58'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -150,7 +150,7 @@ if (asideStatus !== undefined) {
    } else {
      document.documentElement.classList.remove('hide-aside')
    }
-}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/photo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">標籤</div><div class="length-num">38</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分類</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.imgur.com/XWC627z.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">hbdoy's blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">玩轉 Fiddler－HTTP(s) 抓包能手 &amp; 常見「特殊」用途</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2021-08-23T12:51:22.000Z" title="發表於 2021-08-23 20:51:22">2021-08-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2021-08-23T15:51:34.293Z" title="更新於 2021-08-23 23:51:34">2021-08-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/DevTools/">DevTools</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">4.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閲讀時長:</span><span>13分鐘</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>你是否曾經有這些困擾呢?</p>
+}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/photo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">標籤</div><div class="length-num">38</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分類</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/image/XWC627z.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">hbdoy's blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">玩轉 Fiddler－HTTP(s) 抓包能手 &amp; 常見「特殊」用途</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2021-08-23T12:51:22.000Z" title="發表於 2021-08-23 20:51:22">2021-08-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2023-06-04T10:07:58.507Z" title="更新於 2023-06-04 18:07:58">2023-06-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/DevTools/">DevTools</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">4.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閲讀時長:</span><span>13分鐘</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>你是否曾經有這些困擾呢?</p>
 <ol>
 <li>戳 API 想要修改前端 Request 送出去的 JSON，但 JS 被 uglify 很難追、或是開 Postman 但要處理認證、授權、和整包 JSON 很麻煩。</li>
 <li>承上，想看的是 UI 與 JS 後續行為，Postman 愛莫能助。</li>
@@ -176,7 +176,7 @@ if (asideStatus !== undefined) {
 <p>Fiddler 是一個用於 HTTP 調試的代理伺服器應用程式</p>
 </blockquote>
 <p>也就是說，他能夠抓取並記錄 HTTP 流量，而 HTTPS 也可以利用自簽名證書實現 Man-in-the-middle attack 進行記錄。</p>
-<h2 id="運作流程"><a href="#運作流程" class="headerlink" title="運作流程"></a>運作流程</h2><p><img src="https://i.imgur.com/eC9mrmw.png" alt="Image"></p>
+<h2 id="運作流程"><a href="#運作流程" class="headerlink" title="運作流程"></a>運作流程</h2><p><img src="/image/eC9mrmw.png" alt="Image"></p>
 <p>Client 與 Server 之間的 Request 和 Response 都將經過 Fiddler，由 Fiddler 進行轉發，此時他以代理伺服器的方式存在。</p>
 <p>白話一點來講，可以把圖中的 Fiddler 當成送信的郵差，只要他願意，他可以偷看寄件者寫了什麼東西，甚至是串改信件內容，而收件者回信時，也可以偷看&amp;串改。</p>
 <h2 id="常見工具比較"><a href="#常見工具比較" class="headerlink" title="常見工具比較"></a>常見工具比較</h2><ol>
@@ -190,9 +190,9 @@ if (asideStatus !== undefined) {
 <p>如果是要對封包進行截取、重發、編輯等等操作，或是要側錄手機上 APP 的封包，則使用 Fiddler。</p>
 <h2 id="Fiddler-版本"><a href="#Fiddler-版本" class="headerlink" title="Fiddler 版本"></a>Fiddler 版本</h2><p>這邊說的 Fiddler 以及接下來的示範，都會使用 Fiddler Classic 版本。</p>
 <ol>
-<li><p>Fiddler Classic：只能在 Windows 執行，免費使用，功能齊全，但介面對新手比較不友善。<br><img src="https://i.imgur.com/UMDdyXQ.png" alt="Image"></p>
+<li><p>Fiddler Classic：只能在 Windows 執行，免費使用，功能齊全，但介面對新手比較不友善。<br><img src="/image/UMDdyXQ.png" alt="Image"></p>
 </li>
-<li><p>Fiddler Everywhere：跨平台，介面友善，一樣能夠修改封包內容，但沒辦法中斷請求以便即時修改，只能設定好 AutoResponder 來修改內容，在 2021/06/29 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.telerik.com/support/whats-new/fiddler-everywhere/release-history">V2.0 發布後</a>，沒有辦法再免費使用（V1.X 是可以免費使用，但也可以付費獲取更多功能）。<br><img src="https://i.imgur.com/UQZgIER.png" alt="Image"></p>
+<li><p>Fiddler Everywhere：跨平台，介面友善，一樣能夠修改封包內容，但沒辦法中斷請求以便即時修改，只能設定好 AutoResponder 來修改內容，在 2021/06/29 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.telerik.com/support/whats-new/fiddler-everywhere/release-history">V2.0 發布後</a>，沒有辦法再免費使用（V1.X 是可以免費使用，但也可以付費獲取更多功能）。<br><img src="/image/UQZgIER.png" alt="Image"></p>
 </li>
 </ol>
 <p>順便提一下歷史背景，2003 年 Fiddler 誕生，在 2012 年被 Telerik 收購，原作者在 2015 年離開 Telerik 跑去 Google，所以 2015 年之後就是由 Telerik 繼續開發，然後 2018 年發布第一版的 Fiddler Everywhere。</p>
@@ -201,37 +201,37 @@ if (asideStatus !== undefined) {
 <p>若是軟體有幫助到你，而價錢也可以接受的話，與其花時間找其他免費的替代方案，不妨可以直接付費支持，讓作者未來繼續開發新功能。</p>
 <h1 id="實際操作"><a href="#實際操作" class="headerlink" title="實際操作"></a>實際操作</h1><p>講了那麼多，來看一下怎麼使用吧。</p>
 <h2 id="安裝信任憑證-Trust-root-certificate-以擷取-HTTPS-流量"><a href="#安裝信任憑證-Trust-root-certificate-以擷取-HTTPS-流量" class="headerlink" title="安裝信任憑證(Trust root certificate)以擷取 HTTPS 流量"></a>安裝信任憑證(Trust root certificate)以擷取 HTTPS 流量</h2><p>想要抓取 HTTPS 流量的話，要先進行以下設定</p>
-<p><img src="https://i.imgur.com/LpuHmfC.png" alt="Image"></p>
-<p><img src="https://i.imgur.com/tB5aLDi.png" alt="Image"></p>
+<p><img src="/image/LpuHmfC.png" alt="Image"></p>
+<p><img src="/image/tB5aLDi.png" alt="Image"></p>
 <p>接著一路確定，到最後安裝完成就會看到成功的訊息</p>
-<p><img src="https://i.imgur.com/bvu41t9.png" alt="Image"></p>
+<p><img src="/image/bvu41t9.png" alt="Image"></p>
 <p>其餘設定則維持預設即可</p>
 <p>比較可能會調整到的是預設監聽的 port，如果不想掛在 8866 上，可以自己修改。</p>
-<p><img src="https://i.imgur.com/4sJrxYr.png" alt="Image"></p>
+<p><img src="/image/4sJrxYr.png" alt="Image"></p>
 <h2 id="開始抓包"><a href="#開始抓包" class="headerlink" title="開始抓包"></a>開始抓包</h2><p>可以按 F12，或是左上角的 File &gt; Capture Traffic，或者是點一下左下角紅色框框處(沒有在抓的時候什麼圖案都不會有，但還是可以點一下空白處啟動)，啟動會顯示 Capturing。</p>
-<p><img src="https://i.imgur.com/COFpcwG.png" alt="Image"></p>
+<p><img src="/image/COFpcwG.png" alt="Image"></p>
 <p>隨意開啟一個網頁，就會看到所有抓到的流量，左半邊是紀錄，點選 Request，可以在右半邊的 Inspectors 看到 Request &amp; Response 細節，包括 Headers、Cookie、Data…etc，其實就和瀏覽器的開發者工具差不多，可以很快上手。</p>
-<p><img src="https://i.imgur.com/hV4x1I7.png" alt="Image"></p>
+<p><img src="/image/hV4x1I7.png" alt="Image"></p>
 <p>對 Request 按右鍵，也可以進行複製、儲存、重送、註解、highlight 等等操作。</p>
-<p><img src="https://i.imgur.com/fy3fJMT.png" alt="Image"></p>
+<p><img src="/image/fy3fJMT.png" alt="Image"></p>
 <p>最上方的選單也有常用功能可以操作，像是如果想清空擷取紀錄，可以點一下 Go 旁邊的那個「X」。</p>
-<p><img src="https://i.imgur.com/UW1OwYH.png" alt="Image"></p>
+<p><img src="/image/UW1OwYH.png" alt="Image"></p>
 <h2 id="過濾"><a href="#過濾" class="headerlink" title="過濾"></a>過濾</h2><p>開始抓包後，應該很快就會有一個困擾，設備上所有 HTTP 流量都會被記錄在上面，雜亂到難以查找，有時候你只是想看一個單一的網站、或是任何 Client 端的程式軟體，如果是這樣的話，可以設定 Filter 規則。</p>
 <p>最基本的設定就是指定 Hosts，多個 Hosts 可以用「;」隔開。</p>
 <p>進階一點的話，可以研究一下 Hosts 區塊下方的選項，像是可以指定哪個 Process 的流量、只顯示符合設定規則的 Request 或 Response、也能夠偵測到特定的 Request 就自動進中斷點（中斷點後面會講）。</p>
-<p><img src="https://i.imgur.com/p9YQNVV.png" alt="Image"></p>
+<p><img src="/image/p9YQNVV.png" alt="Image"></p>
 <h2 id="調試-API"><a href="#調試-API" class="headerlink" title="調試 API"></a>調試 API</h2><p>如果想要像 Postman 那樣發請求，Fiddler 也是可以做到的。</p>
 <p>切換頁籤到 Composer 即可，發送的請求也會出現在左邊區塊的紀錄裡面。</p>
-<p><img src="https://i.imgur.com/IHyd7Eh.png" alt="Image"></p>
+<p><img src="/image/IHyd7Eh.png" alt="Image"></p>
 <h1 id="修改封包"><a href="#修改封包" class="headerlink" title="修改封包"></a>修改封包</h1><p>介紹的時候有提到，Fiddler 就像是郵差一樣，可以修改寄件者與收件者的信件內容。</p>
 <p>修改的方式如同 IDE 中斷點一樣，可以決定是要卡住 Request 還是 Response，卡住後可以修改裡面的內容，改完再放行。</p>
 <p>進中斷點（以 Response 為例），可以修改原先預期回傳的內容，不管是 HTML、CSS、JS、JSON 都可以（紅 1），也可以修改回傳的 HTTP Status Code（紅 2），確定後，就點 Run to Completion（紅 3）讓封包繼續傳給 Client 端（EX: Browser）。</p>
-<p><img src="https://i.imgur.com/1p9juay.png" alt="Image"></p>
+<p><img src="/image/1p9juay.png" alt="Image"></p>
 <p>除了修改內容或是 HTTP Status Code 以外，Choose Response 最下面有一個「Find a file」，點了之後可以選擇一個 Local 端的檔案，取代掉原本回傳的內容。</p>
 <p>這個在開發測試滿好用的，像是你改了新的一版 JS，Local 簡單測試沒有問題後，想上到正式環境看一下效果，但又怕修改的 JS 有問題，那就可以考慮這種方法，連到正式機的網頁，然後攔截舊版 JS，替換成新的 JS。</p>
-<p><img src="https://i.imgur.com/KWl5dbR.png" alt="Image"></p>
+<p><img src="/image/KWl5dbR.png" alt="Image"></p>
 <h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><p>如果想要把所有卡住的請求都直接放行，可以點快速功能中的「Go」</p>
-<p><img src="https://i.imgur.com/2HtjTOX.png" alt="Image"></p>
+<p><img src="/image/2HtjTOX.png" alt="Image"></p>
 <h2 id="範例情境"><a href="#範例情境" class="headerlink" title="範例情境"></a>範例情境</h2><p>呼應一下<strong>前言</strong>提到的情境，都是下中斷點可以解決的。</p>
 <p><strong>卡 Request</strong></p>
 <ul>
@@ -253,12 +253,12 @@ if (asideStatus !== undefined) {
 </ol>
 <h3 id="Global-直接開啟-Automatic-breakpoints"><a href="#Global-直接開啟-Automatic-breakpoints" class="headerlink" title="Global 直接開啟 Automatic breakpoints"></a>Global 直接開啟 Automatic breakpoints</h3><p>顧名思義，開啟後所有的 Request 或 Response 都會進入中斷點，在設定好 Filter 不會有太多不相干流量的情況下，也是滿好用的，不用在特別設定什麼規則。</p>
 <p>開啟的方式可以選單點，或是 F11 快捷鍵。</p>
-<p><img src="https://i.imgur.com/n7Z8S2O.png" alt="Image"></p>
-<p><img src="https://i.imgur.com/1s5M74Z.png" alt="Image"></p>
+<p><img src="/image/n7Z8S2O.png" alt="Image"></p>
+<p><img src="/image/1s5M74Z.png" alt="Image"></p>
 <p>以 Before Request 為例，勾選後最下面的狀態欄是一個向上的箭頭，代表作用中。</p>
-<p><img src="https://i.imgur.com/gu1BzvL.png" alt="Image"></p>
+<p><img src="/image/gu1BzvL.png" alt="Image"></p>
 <p>也可以點一下，變成 After Response，是一個向下的箭頭（很不明顯XD）。</p>
-<p><img src="https://i.imgur.com/22sLdkA.png" alt="Image"></p>
+<p><img src="/image/22sLdkA.png" alt="Image"></p>
 <h3 id="設定-AutoResponder"><a href="#設定-AutoResponder" class="headerlink" title="設定 AutoResponder"></a>設定 AutoResponder</h3><p>如果有這些情況，就可以用 AutoResponder。</p>
 <ol>
 <li>不想要無差別卡中斷點，只需要特定的 Request。</li>
@@ -266,42 +266,42 @@ if (asideStatus !== undefined) {
 </ol>
 <p>像是上面有提到的替換 JS，總不可能同一個 JS 檔案，每次重新整理網頁後，都要手動再選擇一次。</p>
 <p>所以 AutoResponder 可以理解為，針對某個符合條件的網址，就按照寫好的規則自動修改它的 Response。</p>
-<p><img src="https://i.imgur.com/CJk6e2Q.png" alt="Image"></p>
+<p><img src="/image/CJk6e2Q.png" alt="Image"></p>
 <p>設定步驟</p>
 <ol>
 <li>切換到【紅 1】頁籤</li>
 <li>勾選【紅 2】 啟用自訂規則</li>
 <li>勾選【紅 3】很重要！它的意思是沒有符合條件的網址，會直接略過，否則那些不符合條件的請求都會無法送出。</li>
 </ol>
-<p><img src="https://i.imgur.com/N4ti2xc.png" alt="Image"></p>
+<p><img src="/image/N4ti2xc.png" alt="Image"></p>
 <ol start="4">
 <li>【紅 4】點選添加規則，會在【紅 5】出現，能夠設定的條件如下，可以寫正則式、指定 URL、指定 URL &amp; HTTP Method…etc。</li>
 </ol>
 <p>像是圖中範例，我直接寫一個網址也可以XD</p>
-<p><img src="https://i.imgur.com/WFEDZF0.png" alt="Image"></p>
+<p><img src="/image/WFEDZF0.png" alt="Image"></p>
 <ol start="5">
 <li>最後就是設定要自動調整的 Response 內容了，和上面提到的差不多，可以選擇回傳的狀態碼，或是是想要回傳自訂檔案的話，點最後的「Find a file」。</li>
 </ol>
-<p><img src="https://i.imgur.com/d8BlxwE.png" alt="Image"></p>
+<p><img src="/image/d8BlxwE.png" alt="Image"></p>
 <p>如果是想要調整 Response 內容的話，點倒數第二個「Create New Response」，然後在跳出的視窗中，編寫你自己需要的 Response Headers、Cookies、JSON…etc。</p>
-<p><img src="https://i.imgur.com/bqh3Yka.png" alt="Image"></p>
+<p><img src="/image/bqh3Yka.png" alt="Image"></p>
 <h4 id="補充-1"><a href="#補充-1" class="headerlink" title="補充"></a>補充</h4><p>如果你在 AutoResponder 想要的是，讓特定的 Request or Response 進中斷點，這也是可以做到的，只要選擇「bpu」或「bpafter」，前者是卡 Request，後者是 Response。這樣只要符合條件的請求，就會如同上面提到的 Global 中斷點那樣，可以即時操作修改。</p>
-<p><img src="https://i.imgur.com/fWb7GzK.png" alt="Image"></p>
+<p><img src="/image/fWb7GzK.png" alt="Image"></p>
 <p>還有些有趣的選項也可以試試看，像是讓特定的請求 delay、drop、redirect。</p>
 <h3 id="QuickExec-打指令"><a href="#QuickExec-打指令" class="headerlink" title="QuickExec 打指令"></a>QuickExec 打指令</h3><p>如果你當下只是要讓特定的 URL 進中斷點 Debug，除了上面提到的 Global 與 AutoResponder 以外，也可以考慮輸入指令的方式。</p>
 <p>還記得上面提到的 <code>bpu</code>、<code>bpafter</code> 嗎?</p>
 <p>其實可以把指令直接打在最下方的黑色框框中（QuickExec）</p>
-<p><img src="https://i.imgur.com/U2Q0kb5.png" alt="Image"></p>
+<p><img src="/image/U2Q0kb5.png" alt="Image"></p>
 <p>像是我要卡住指定 URL 的 Request 就可以這樣打，打完按下 Enter</p>
-<p><img src="https://i.imgur.com/RVoe1bB.png" alt="Image"></p>
+<p><img src="/image/RVoe1bB.png" alt="Image"></p>
 <p>就會在右下角出現當前的指令 &amp; URL，如果想要清除指令的話，就再打一次 <code>bpu</code>，然後不要加任何 URL，這樣就能清空上一條指令了。 </p>
-<p><img src="https://i.imgur.com/CbaYuJo.png" alt="Image"></p>
+<p><img src="/image/CbaYuJo.png" alt="Image"></p>
 <h4 id="補充-2"><a href="#補充-2" class="headerlink" title="補充"></a>補充</h4><p>其他支援的指令如下</p>
-<p><img src="https://i.imgur.com/jCD6gvu.png" alt="Image"></p>
+<p><img src="/image/jCD6gvu.png" alt="Image"></p>
 <h1 id="Fiddler-抓不到特定應用程式的封包"><a href="#Fiddler-抓不到特定應用程式的封包" class="headerlink" title="Fiddler 抓不到特定應用程式的封包?"></a>Fiddler 抓不到特定應用程式的封包?</h1><p>到此為止，已經講述了如何配置 Fiddler 抓取 HTTP(s) 流量，並且搭配 Filters 與中斷點，讓開發更加方便。</p>
 <p>預設抓取 <code>All Processes</code> 下，除了 Browser 以外，有些桌面應用程式的流量也有出現在 Fiddler，但有些卻沒有，這是怎麼回事呢?</p>
-<p><img src="https://i.imgur.com/XJbEZbb.png" alt="Image"></p>
-<p><img src="https://i.imgur.com/BAzIWMC.png" alt="Image"></p>
+<p><img src="/image/XJbEZbb.png" alt="Image"></p>
+<p><img src="/image/BAzIWMC.png" alt="Image"></p>
 <p>這是因為除了 Browser 以外，其他能夠抓到的情況是</p>
 <ol>
 <li>程式使用 WinInet 函式庫發送 HTTP/HTTPS</li>
@@ -309,12 +309,12 @@ if (asideStatus !== undefined) {
 </ol>
 <p>那如果你還是想要抓某個應用程式，只有兩個辦法</p>
 <ol>
-<li>看一下該應用程式有沒有提供代理伺服器設定<br><img src="https://i.imgur.com/2IHwCj5.png" alt="Image"></li>
+<li>看一下該應用程式有沒有提供代理伺服器設定<br><img src="/image/2IHwCj5.png" alt="Image"></li>
 <li>沒有的話只能透過 Proxifier 之類的工具強制代理</li>
 </ol>
 <h2 id="實際演練"><a href="#實際演練" class="headerlink" title="實際演練"></a>實際演練</h2><p>我有購買一個影片，但影片被加密過，要用對方提供的特殊播放器，並且輸入正確的帳號密碼才能夠觀看。</p>
-<p><img src="https://i.imgur.com/gmomyBd.png" alt="Image"></p>
-<p><img src="https://i.imgur.com/QQOn1Q7.png" alt="Image"></p>
+<p><img src="/image/gmomyBd.png" alt="Image"></p>
+<p><img src="/image/QQOn1Q7.png" alt="Image"></p>
 <p>但我遇到一個問題，影片是在本地端，並非線上串流，理論上我應該可以離線（斷網）觀看，但實際把網路關掉後，輸入正確的帳號密碼，卻無法播放，然後打開網路又可以正常播放，除了不方便以外，有時候就算有網路，伺服器還常常連不上…</p>
 <p>至此猜測</p>
 <ol>
@@ -322,7 +322,7 @@ if (asideStatus !== undefined) {
 <li>或者是 Key 是在本地端計算，但可能有其他功能，像是確認軟體版本號之類的，如果無法連上網，就沒辦法播放。</li>
 </ol>
 <p>有了猜想後，來抓包觀察一下，不出所料，什麼都抓不到，而且播放軟體並沒有提供代理設置的功能。</p>
-<p><img src="https://i.imgur.com/gI6WNFf.png" alt="Image"></p>
+<p><img src="/image/gI6WNFf.png" alt="Image"></p>
 <p>那就只能用上面提到的 Proxifier 來強制幫他代理吧！</p>
 <p>PS.</p>
 <ol>
@@ -330,17 +330,17 @@ if (asideStatus !== undefined) {
 <li>Proxifier 是要付費的，如果你不想付費，可以尋找其他同類型的工具。</li>
 </ol>
 <p>開啟 Proxifier 設定好規則</p>
-<p><img src="https://i.imgur.com/kGFQD2B.png" alt="Image"></p>
+<p><img src="/image/kGFQD2B.png" alt="Image"></p>
 <p>選擇要代理的應用程式</p>
-<p><img src="https://i.imgur.com/34SMiCa.png" alt="Image"></p>
+<p><img src="/image/34SMiCa.png" alt="Image"></p>
 <p>接著再重新播放一次影片，可以看到 Fiddler 成功抓到播放器的封包</p>
-<p><img src="https://i.imgur.com/91vlvhY.png" alt="Image"></p>
+<p><img src="/image/91vlvhY.png" alt="Image"></p>
 <p>在 Response 的 JSON 裡，看到了 <code>play_key</code>，卡了一下中斷點，把其他資料都亂修改，只留下 <code>play_key</code> 還是可以正常播放，因此確定了上面的假設：「軟體是每次播放的時候都拿帳號密碼去戳 Server 取回解密影片的 Key」，但有趣的是，戳了好幾次 Server，每次拿回來的 Key 都一樣XD</p>
-<p><img src="https://i.imgur.com/ZzQ8dIK.png" alt="Image"></p>
+<p><img src="/image/ZzQ8dIK.png" alt="Image"></p>
 <p>拿到 Key（只對我這部影片有效）之後，就來設定 AutoResponder 規則吧</p>
-<p><img src="https://i.imgur.com/ry0xZCB.png" alt="Image"></p>
+<p><img src="/image/ry0xZCB.png" alt="Image"></p>
 <p>可以直接複製剛剛正常的 Response 貼進來就好</p>
-<p><img src="https://i.imgur.com/Y2rWxu3.png" alt="Image"></p>
+<p><img src="/image/Y2rWxu3.png" alt="Image"></p>
 <p>再來可以修改 hosts 讓播放器的網址隨便解析到一個 ip，反正只要連得上，都可以讓他的 Response 變成我們預先設定好的 JSON，如此一來，對方的 Server 不管有沒有啟用，對我們而言都不重要了。</p>
 <h1 id="一些「特殊」的用途"><a href="#一些「特殊」的用途" class="headerlink" title="一些「特殊」的用途"></a>一些「特殊」的用途</h1><p>寫程式常常聽到一句話：「永遠不要相信使用者輸入的內容」，藉由這篇文章，應該更有體會了吧。</p>
 <p>台灣某付費影視網站，曾經發生過只有前端 + API（丟影片 ID 去查） 驗證使用者有沒有權限觀看影片，影片 CDN 資源卻沒有再次驗證，導致修改掉 Request 送出去的影片 ID，就能夠訪問那些使用者無權觀看的影片。</p>

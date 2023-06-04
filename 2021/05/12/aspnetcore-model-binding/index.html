@@ -5,13 +5,13 @@
 <meta property="og:site_name" content="hbdoy&#39;s blog">
 <meta property="og:description" content="前言ASP.NET Core 的 Model Binding 基本上和 ASP.NET Framework 差不多，但實際接觸後，一開始用起來卻卡卡的XD 本文將紀錄一些當初以為理所當然，結果卻不是這麼一回事的狀況。 Model Binding先來科普一下~ 最基本的有三個傳入來源  Form Route Query     可以三個都傳入，但是有其優先序Form &gt; Route &gt;">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/4mGvj6p.png">
+<meta property="og:image" content="https://ryanlee.tw/image/4mGvj6p.png">
 <meta property="article:published_time" content="2021-05-12T15:21:08.000Z">
-<meta property="article:modified_time" content="2022-07-24T10:01:22.163Z">
+<meta property="article:modified_time" content="2023-06-04T10:07:38.706Z">
 <meta property="article:author" content="Ryan Lee">
 <meta property="article:tag" content="Model Binding">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/4mGvj6p.png">
+<meta name="twitter:image" content="https://ryanlee.tw/image/4mGvj6p.png">
 <meta property="fb:app_id" content="209661937271472"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ryanlee.tw/2021/05/12/aspnetcore-model-binding/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/256.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/pwa/16.png"/><link rel="mask-icon" href="/img/pwa/32.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-S9J3B57KGY"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
@@ -84,7 +84,7 @@ var saveToLocal = {
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-07-24 18:01:22'
+  postUpdate: '2023-06-04 18:07:38'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -149,7 +149,7 @@ if (asideStatus !== undefined) {
    } else {
      document.documentElement.classList.remove('hide-aside')
    }
-}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/photo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">標籤</div><div class="length-num">38</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分類</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.imgur.com/4mGvj6p.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">hbdoy's blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">ASP.NET Core Model Binding 死活綁不上 - 1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2021-05-12T15:21:08.000Z" title="發表於 2021-05-12 23:21:08">2021-05-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2022-07-24T10:01:22.163Z" title="更新於 2022-07-24 18:01:22">2022-07-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ASP-NET-Core/">ASP.NET Core</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閲讀時長:</span><span>7分鐘</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ASP.NET Core 的 Model Binding 基本上和 ASP.NET Framework 差不多，但實際接觸後，一開始用起來卻卡卡的XD</p>
+}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/photo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">標籤</div><div class="length-num">38</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分類</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/image/4mGvj6p.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">hbdoy's blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">ASP.NET Core Model Binding 死活綁不上 - 1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2021-05-12T15:21:08.000Z" title="發表於 2021-05-12 23:21:08">2021-05-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2023-06-04T10:07:38.706Z" title="更新於 2023-06-04 18:07:38">2023-06-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ASP-NET-Core/">ASP.NET Core</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閲讀時長:</span><span>7分鐘</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ASP.NET Core 的 Model Binding 基本上和 ASP.NET Framework 差不多，但實際接觸後，一開始用起來卻卡卡的XD</p>
 <p>本文將紀錄一些當初以為理所當然，結果卻不是這麼一回事的狀況。</p>
 <h2 id="Model-Binding"><a href="#Model-Binding" class="headerlink" title="Model Binding"></a>Model Binding</h2><p>先來科普一下~</p>
 <p>最基本的有三個傳入來源</p>
@@ -158,11 +158,11 @@ if (asideStatus !== undefined) {
 <li>Route</li>
 <li>Query</li>
 </ol>
-<p><img src="https://i.imgur.com/CRzLCcT.png" alt="Image"></p>
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/3vEzlK2.png">
+<p><img src="/image/CRzLCcT.png" alt="Image"></p>
+<img style="max-width: 350px; width: 100%" src="/image/3vEzlK2.png">
 
 <p>可以三個都傳入，但是有其優先序<br>Form &gt; Route &gt; Query</p>
-<p><img src="https://i.imgur.com/jtdbZzi.png" alt="Image"></p>
+<p><img src="/image/jtdbZzi.png" alt="Image"></p>
 <p>可以看到結果：</p>
 <p>透過 Form 傳入 <code>MyId1 = 1</code><br>透過 Query 參數傳入 <code>MyId1 = 3</code>, <code>MyId2 = 4</code></p>
 <p>因為優先序的關係，MyId1 為 Form 傳入的 <strong>1</strong>，而 MyId2 因為 Form 沒有傳入，所以是吃到 Query 的 <strong>4</strong>。</p>
@@ -185,15 +185,15 @@ if (asideStatus !== undefined) {
 <li>直接在 Action 的參數前面指定</li>
 <li>複雜型別可以到 Model 中的成員加上</li>
 </ol>
-<p><img src="https://i.imgur.com/80gy0XZ.png" alt="Image"></p>
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/WIS0mNw.png">
+<p><img src="/image/80gy0XZ.png" alt="Image"></p>
+<img style="max-width: 350px; width: 100%" src="/image/WIS0mNw.png">
 
 <p>以上面的例子來說，在 MyId2 指定了 <code>[FromQuery]</code>，那就算在優先序高的 Form 中傳入 <code>MyId2 = 2</code>，也不會被影響到，而是吃 Query 傳入的 <code>MyId2 = 4</code>。</p>
-<p><img src="https://i.imgur.com/c5MHWtF.png" alt="Image"></p>
+<p><img src="/image/c5MHWtF.png" alt="Image"></p>
 <p>Q: 但如果 Query 沒有傳入 MyId2，而是只有 Form 傳入呢?</p>
 <p>A: 如果在沒有指定 Attribute 的情況下，會吃到 Form 傳入的，但如果指定了 <code>[FromQuery]</code>，就算 Form 有傳入，也吃不到。</p>
 <p>下圖可以看到 MyId2 沒吃到，所以回傳 int 預設的 0。</p>
-<p><img src="https://i.imgur.com/3mcptNJ.png" alt="Image"></p>
+<p><img src="/image/3mcptNJ.png" alt="Image"></p>
 <h1 id="本文開始"><a href="#本文開始" class="headerlink" title="本文開始"></a>本文開始</h1><p>實際開發時，最頭痛的資料來源就屬 Json 了。</p>
 <p>為什麼頭痛，先來看看下面這個例子…</p>
 <h3 id="複雜型別"><a href="#複雜型別" class="headerlink" title="複雜型別"></a>複雜型別</h3><p>若有兩個 Model A、B</p>
@@ -203,29 +203,29 @@ if (asideStatus !== undefined) {
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> IActionResult <span class="title">GetSomething</span>(<span class="params">A a, B b</span>)</span></span><br></pre></td></tr></table></figure>
 
 <p>但如果是 ASP.NET Core，要接收 Json 需要指定 <code>[FromBody]</code>，否則收不進來</p>
-<p><img src="https://i.imgur.com/xfqZH3L.png" alt="Image"></p>
+<p><img src="/image/xfqZH3L.png" alt="Image"></p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> IActionResult <span class="title">GetSomething</span>(<span class="params">[FromBody] A a</span>)</span></span><br></pre></td></tr></table></figure>
 
 <p>而且 <code>[FromBody]</code> 只能指定到一個參數上面，所以就算這樣寫，也只會把 Value 都嘗試 Bind 到 A 上</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> IActionResult <span class="title">GetSomething</span>(<span class="params">[FromBody] A a, [FromBody] B b</span>)</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/Hpnzwvq.png" alt="Image"></p>
+<p><img src="/image/Hpnzwvq.png" alt="Image"></p>
 <h3 id="簡單型別"><a href="#簡單型別" class="headerlink" title="簡單型別"></a>簡單型別</h3><p>簡單型別透過 JSON 也只能帶一個上來</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> IActionResult <span class="title">GetSomething</span>(<span class="params">[FromBody] <span class="built_in">string</span> strA, [FromBody] <span class="built_in">string</span> strB</span>)</span></span><br></pre></td></tr></table></figure>
 
 <p>這樣寫一樣綁不上去</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    contentType: <span class="string">&quot;application/json; charset=utf-8&quot;</span>,</span><br><span class="line">    dataType: <span class="string">&quot;json&quot;</span>,</span><br><span class="line">    data: <span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">        strA: <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">        strB: <span class="string">&quot;Alice&quot;</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/4mGvj6p.png" alt="Image"></p>
+<p><img src="/image/4mGvj6p.png" alt="Image"></p>
 <p>你以為這樣就綁得上去了嗎?</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    contentType: <span class="string">&quot;application/json; charset=utf-8&quot;</span>,</span><br><span class="line">    dataType: <span class="string">&quot;json&quot;</span>,</span><br><span class="line">    data: <span class="built_in">JSON</span>.stringify&#123;</span><br><span class="line">        strA: <span class="string">&quot;Bob&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>因為不符合直接傳 string，所以名字一樣也收不了</p>
-<p><img src="https://i.imgur.com/OcVu3gP.png" alt="Image"></p>
+<p><img src="/image/OcVu3gP.png" alt="Image"></p>
 <p>要直接傳一個 string 才收的到</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    contentType: <span class="string">&quot;application/json; charset=utf-8&quot;</span>,</span><br><span class="line">    dataType: <span class="string">&quot;json&quot;</span>,</span><br><span class="line">    data: <span class="built_in">JSON</span>.stringify(<span class="string">&quot;Bob&quot;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/xmsrSJG.png" alt="Image"></p>
+<p><img src="/image/xmsrSJG.png" alt="Image"></p>
 <p>夠難受吧，如果是多個簡單型別，別用 Json 了，直接發 Form 上來。</p>
 <h2 id="問題-1，接收多個參數"><a href="#問題-1，接收多個參數" class="headerlink" title="問題 1，接收多個參數"></a>問題 1，接收多個參數</h2><p>那如果前端指定 Json，要傳多個參數上來，該怎麼辦呢?</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    str: <span class="string">&quot;HiHi&quot;</span>,</span><br><span class="line">    a: &#123;</span><br><span class="line">        NameA: <span class="string">&quot;Bob&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    b: &#123;</span><br><span class="line">        NameB: <span class="string">&quot;Alice&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -255,12 +255,12 @@ if (asideStatus !== undefined) {
 
 <p>但 Form 該怎麼帶成上面那樣有階層式的阿…</p>
 <p>如果直接傳兩個 Name 上去，結果會將第一個抓到的 Name 綁到 A 和 B 的 Name 上。</p>
-<p><img src="https://i.imgur.com/VawRThK.png" alt="Image"></p>
+<p><img src="/image/VawRThK.png" alt="Image"></p>
 <p>Q: Form 表單的資料格式看起來都是 key = value，該怎麼帶多個同名 key 呢?</p>
 <p>A: 答案是可以這樣寫：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    contentType: <span class="string">&quot;application/x-www-form-urlencoded; charset=utf-8&quot;</span>,</span><br><span class="line">    dataType: <span class="string">&quot;json&quot;</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        a[Name]: <span class="string">&quot;AAA&quot;</span>,</span><br><span class="line">        b[Name]: <span class="string">&quot;BBB&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/Wk4FQMS.png" alt="Image"></p>
+<p><img src="/image/Wk4FQMS.png" alt="Image"></p>
 <h3 id="多個複雜型別"><a href="#多個複雜型別" class="headerlink" title="多個複雜型別"></a>多個複雜型別</h3><p>甚至資料是這樣子呢?</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    str: <span class="string">&quot;myStr&quot;</span>,</span><br><span class="line">    a: &#123;</span><br><span class="line">        NameA: <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">        AModel: &#123;</span><br><span class="line">            Address: <span class="string">&quot;AAAAdress&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    b: &#123;</span><br><span class="line">        NameB: <span class="string">&quot;Alice&quot;</span>,</span><br><span class="line">        BModel: &#123;</span><br><span class="line">            Address: <span class="string">&quot;BBBAdress&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -275,10 +275,10 @@ if (asideStatus !== undefined) {
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myData = &#123;</span><br><span class="line">    str: <span class="string">&quot;myStr&quot;</span>,</span><br><span class="line">    a: &#123;</span><br><span class="line">        NameA: <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">        AModel: &#123;</span><br><span class="line">            Address: <span class="string">&quot;AAAAdress&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    b: &#123;</span><br><span class="line">        NameB: <span class="string">&quot;Alice&quot;</span>,</span><br><span class="line">        BModel: &#123;</span><br><span class="line">            Address: <span class="string">&quot;BBBAdress&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    contentType: <span class="string">&quot;application/x-www-form-urlencoded; charset=utf-8&quot;</span>,</span><br><span class="line">    dataType: <span class="string">&quot;json&quot;</span>,</span><br><span class="line">    data: myData</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>送上去的 Form Data 也會是上面範例中的型式</p>
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/Du5DHSY.png">
+<img style="max-width: 350px; width: 100%" src="/image/Du5DHSY.png">
 
 <p>後端也能正確解析</p>
-<img style="max-width: 350px; width: 100%" src="https://i.imgur.com/Fxcz1hP.png">
+<img style="max-width: 350px; width: 100%" src="/image/Fxcz1hP.png">
 
 <p>補充：如果在送出前就想要拿到這種格式，可以呼叫 <code>param</code> 函數，效果是一樣的。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.param(myData)</span><br></pre></td></tr></table></figure>

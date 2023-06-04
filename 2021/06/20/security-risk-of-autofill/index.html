@@ -5,14 +5,14 @@
 <meta property="og:site_name" content="hbdoy&#39;s blog">
 <meta property="og:description" content="前言瀏覽器能夠儲存使用者經常填入的各種資訊，舉凡帳號、密碼、Email、姓名、電話、地址、信用卡資訊…等等。 帳號密碼可能不一定會儲存，但 Email、姓名、電話之類的個資，應該很多人會選擇讓瀏覽器記憶，避免每次填寫樸實又枯燥乏味的表單要一直重複輸入。 但是在理解瀏覽器 autocomplete 觸發機制後，你還敢直接填入你的資訊嗎? 以一個只有 Email 的表單為例，你以為只有填入 Email">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/hCMbYtW.jpg">
+<meta property="og:image" content="https://ryanlee.tw/image/hCMbYtW.jpg">
 <meta property="article:published_time" content="2021-06-20T06:18:15.000Z">
-<meta property="article:modified_time" content="2022-07-19T16:02:44.745Z">
+<meta property="article:modified_time" content="2023-06-04T10:09:24.441Z">
 <meta property="article:author" content="Ryan Lee">
 <meta property="article:tag" content="browser">
 <meta property="article:tag" content="autofill">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/hCMbYtW.jpg">
+<meta name="twitter:image" content="https://ryanlee.tw/image/hCMbYtW.jpg">
 <meta property="fb:app_id" content="209661937271472"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ryanlee.tw/2021/06/20/security-risk-of-autofill/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/256.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/pwa/16.png"/><link rel="mask-icon" href="/img/pwa/32.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-S9J3B57KGY"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
@@ -85,7 +85,7 @@ var saveToLocal = {
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-07-20 00:02:44'
+  postUpdate: '2023-06-04 18:09:24'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -150,28 +150,28 @@ if (asideStatus !== undefined) {
    } else {
      document.documentElement.classList.remove('hide-aside')
    }
-}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/photo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">標籤</div><div class="length-num">38</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分類</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.imgur.com/hCMbYtW.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">hbdoy's blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">愛用瀏覽器自動填入? 小心個資外洩!</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2021-06-20T06:18:15.000Z" title="發表於 2021-06-20 14:18:15">2021-06-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2022-07-19T16:02:44.745Z" title="更新於 2022-07-20 00:02:44">2022-07-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Security/">Security</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閲讀時長:</span><span>3分鐘</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>瀏覽器能夠儲存使用者經常填入的各種資訊，舉凡帳號、密碼、Email、姓名、電話、地址、信用卡資訊…等等。</p>
+}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/photo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">標籤</div><div class="length-num">38</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分類</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/image/hCMbYtW.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">hbdoy's blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/privacy-policy"><i class="fa-fw fas fa-book"></i><span> Privacy</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">愛用瀏覽器自動填入? 小心個資外洩!</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2021-06-20T06:18:15.000Z" title="發表於 2021-06-20 14:18:15">2021-06-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2023-06-04T10:09:24.441Z" title="更新於 2023-06-04 18:09:24">2023-06-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Security/">Security</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閲讀時長:</span><span>3分鐘</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>瀏覽器能夠儲存使用者經常填入的各種資訊，舉凡帳號、密碼、Email、姓名、電話、地址、信用卡資訊…等等。</p>
 <p>帳號密碼可能不一定會儲存，但 Email、姓名、電話之類的個資，應該很多人會選擇讓瀏覽器記憶，避免每次填寫樸實又枯燥乏味的表單要一直重複輸入。</p>
 <p>但是在理解瀏覽器 autocomplete 觸發機制後，你還敢直接填入你的資訊嗎?</p>
 <p>以一個只有 Email 的表單為例，你以為只有填入 Email，實際上所有紀錄的個資，都可以被心懷不軌的網站拿到。</p>
 <p>不囉嗦，直接弄個 Demo 網站看效果: <a href="https://ryanlee.tw/security-risk-of-autofill-demo">https://ryanlee.tw/security-risk-of-autofill-demo</a></p>
 <h1 id="本文開始"><a href="#本文開始" class="headerlink" title="本文開始"></a>本文開始</h1><p>瀏覽器儲存的資訊看起來很多，但其實就是三個種類，以 Chrome 為例</p>
-<p><img src="https://i.imgur.com/qYskUcE.png" alt="Image"></p>
+<p><img src="/image/qYskUcE.png" alt="Image"></p>
 <ol>
 <li><strong>密碼</strong>: 會綁定網站 Domain，只能夠自動填入相同網址下紀錄的帳密，所以不會發生 A 網站登入，卻填入 B 網站的帳密。</li>
 </ol>
-<p><img src="https://i.imgur.com/TrngHLI.png" alt="Image"></p>
+<p><img src="/image/TrngHLI.png" alt="Image"></p>
 <ol start="2">
 <li><strong>付款方式</strong>: 儲存信用卡資訊(卡號、到期日、持卡人姓名)，要在 https 的網站下才會觸發自動填入。</li>
 </ol>
-<p><img src="https://i.imgur.com/ft7dDbQ.png" alt="Image"></p>
+<p><img src="/image/ft7dDbQ.png" alt="Image"></p>
 <ol start="3">
 <li>(本文主要討論)<strong>地址和其他資訊</strong>: 國家、郵遞區號、地址、姓名、電話、Email。</li>
 </ol>
-<p><img src="https://i.imgur.com/i10XPqF.png" alt="Image"></p>
+<p><img src="/image/i10XPqF.png" alt="Image"></p>
 <h2 id="autocomplete"><a href="#autocomplete" class="headerlink" title="autocomplete"></a>autocomplete</h2><p>那站在開發者的角度，該如何讓瀏覽器知道 input 可以填入什麼資訊呢?</p>
 <p>其實很簡單，就設定 input 的 <code>name</code> 或 <code>autocomplete</code> attribute 就好</p>
-<p><img src="https://i.imgur.com/fQ8YXDo.png" alt="Image"></p>
+<p><img src="/image/fQ8YXDo.png" alt="Image"></p>
 <p>常見的 attribute 如下(<a target="_blank" rel="noopener external nofollow noreferrer" href="https://developers.google.com/web/fundamentals/design-and-ux/input/forms">來源</a>):</p>
 <table>
 <thead>
@@ -223,19 +223,19 @@ if (asideStatus !== undefined) {
 <p>如果你試著把 input 設為 <code>display: none</code>、<code>visibility: hidden</code>、<code>input type=&quot;hidden&quot;</code> 這幾種，會發現瀏覽器不會自動填入他們。</p>
 <p>但如果不要這種隱藏，而是調整成只有使用者看不到的那種隱藏，就可以了XD</p>
 <p>把框線隱藏、長寬設為 0(還是會有一小點)、設定 margin 讓他直接超出螢幕。</p>
-<p><img src="https://i.imgur.com/TuwlhcI.png" alt="Image"></p>
+<p><img src="/image/TuwlhcI.png" alt="Image"></p>
 <h2 id="危害範圍"><a href="#危害範圍" class="headerlink" title="危害範圍"></a>危害範圍</h2><p>Chrome、Edge、Safari 當你自動填入個資時，會順便填入所有能夠對應的個人資訊。</p>
 <p>好消息是帳號密碼、付款方式各自獨立，所以不會填入。</p>
 <p>至於 Firefox 也能夠自動填入，但它需要使用者逐個控制項選擇填入，所以不會發生上述問題。</p>
 <p>以 Chrome 為例，根本不知道實際填入了哪些資訊</p>
-<p><img src="https://i.imgur.com/GNmKUGi.png" alt="Image"></p>
+<p><img src="/image/GNmKUGi.png" alt="Image"></p>
 <p>儘管有些瀏覽器可能會顯示實際填入的資訊，但使用者會認真停下來幾秒鐘檢查的又有多少呢?</p>
 <p>又或者，如果有紀錄多個 Email 的情況下，跳出了詳細資訊，大多也會以為瀏覽器顯示詳細訊息，是為了讓你分辨兩筆資料的差別吧…</p>
 <h3 id="市佔率"><a href="#市佔率" class="headerlink" title="市佔率"></a>市佔率</h3><p>以 <a href="(https://netmarketshare.com/browser-market-share.aspx)">Net Applications 調查結果</a>來看</p>
 <p>在 Desktop 下，Chrome 的使用率接近 7 成</p>
-<p><img src="https://i.imgur.com/jP6eZ3O.png" alt="Image"></p>
+<p><img src="/image/jP6eZ3O.png" alt="Image"></p>
 <p>在 Mobile 下，Chrome 的使用率也穩居 6 成</p>
-<p><img src="https://i.imgur.com/RSFTsSA.png" alt="Image"></p>
+<p><img src="/image/RSFTsSA.png" alt="Image"></p>
 <p>顯然這個問題影響著很大一部份的使用者。</p>
 <h2 id="防範措施"><a href="#防範措施" class="headerlink" title="防範措施"></a>防範措施</h2><p>那到底該如何避免不想要的資訊被網站拿走呢?</p>
 <ol>
